@@ -86,6 +86,12 @@ func NewSwitch(
 	return s, nil
 }
 
+// Host returns the underlying lp2p Host for direct libp2p access (e.g., KDHT).
+// [TACHI FORK] Exported to allow KDHT and rendezvous on the same libp2p host.
+func (s *Switch) Host() *Host {
+	return s.host
+}
+
 //--------------------------------
 // BaseService methods
 //--------------------------------
@@ -185,10 +191,24 @@ func (s *Switch) Reactor(name string) (p2p.Reactor, bool) {
 // AddReactor adds the given reactor to the switch.
 // NOTE: Not goroutine safe.
 func (s *Switch) AddReactor(name string, reactor p2p.Reactor) p2p.Reactor {
-	// used only by CustomReactors
-	s.logUnimplemented("AddReactor")
-
-	return nil
+	// [TACHI FORK] Implement AddReactor for custom reactors (e.g., MuSig2).
+	if err := s.reactors.Add(reactor, name); err != nil {
+		s.Logger.Error("Failed to add reactor", "name", name, "err", err)
+		return nil
+	}
+	for _, ch := range reactor.GetChannels() {
+		protocolID := ProtocolID(ch.ID)
+		s.host.SetStreamHandler(protocolID, s.handleStream)
+		s.Logger.Info("Registered stream handler for custom reactor",
+			"reactor", name, "protocol", protocolID)
+	}
+	reactor.SetSwitch(s)
+	if s.isActive() {
+		if err := reactor.Start(); err != nil {
+			s.Logger.Error("Failed to start custom reactor", "name", name, "err", err)
+		}
+	}
+	return reactor
 }
 
 func (s *Switch) RemoveReactor(_ string, _ p2p.Reactor) {
@@ -330,6 +350,38 @@ func (s *Switch) MarkPeerAsGood(_ p2p.Peer) {
 //--------------------------------
 // Broadcaster methods
 //--------------------------------
+
+func (s *Switch) Broadcast(e p2p.Envelope) chan bool {
+	s.Logger.Debug("Broadcast", "channel", e.ChannelID)
+
+	e.Message = newPreMarshaledMessage(e.Message)
+
+	var wg sync.WaitGroup
+	successChan := make(chan bool, s.peerSet.Size())
+
+	s.peerSet.ForEach(func(p p2p.Peer) {
+		wg.Add(1)
+
+		go func(p p2p.Peer) {
+			defer wg.Done()
+
+			success := p.Send(e)
+			select {
+			case successChan <- success:
+			default:
+				// Skip. This means peer set changed
+				// between Size() and ForEach() calls.
+			}
+		}(p)
+	})
+
+	go func() {
+		wg.Wait()
+		close(successChan)
+	}()
+
+	return successChan
+}
 
 func (s *Switch) BroadcastAsync(e p2p.Envelope) {
 	s.Logger.Debug("BroadcastAsync", "channel", e.ChannelID)
