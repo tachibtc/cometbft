@@ -189,6 +189,15 @@ func (s *Switch) Reactor(name string) (p2p.Reactor, bool) {
 	return s.reactors.GetByName(name)
 }
 
+// AddReactor adds the given reactor to the switch.
+// NOTE: Not goroutine safe.
+func (s *Switch) AddReactor(name string, reactor p2p.Reactor) p2p.Reactor {
+	// used only by CustomReactors
+	s.logUnimplemented("AddReactor")
+
+	return nil
+}
+
 func (s *Switch) RemoveReactor(_ string, _ p2p.Reactor) {
 	// used only by CustomReactors
 	s.logUnimplemented("RemoveReactor")
