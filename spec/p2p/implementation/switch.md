@@ -236,7 +236,7 @@ returned by the method.
 >   `broadcastNewValidBlockMessage`, and `broadcastHasVoteMessage`
 > - By the state sync protocol
 
-## LibP2P Switch (TACHI FORK)
+## LibP2P Switch For Tachi Metaprotocol
 
 The `lp2p.Switch` extends the base switch behavior for libp2p-based networking.
 
@@ -252,17 +252,6 @@ Hosts can be wrapped using:
 - `lp2p.WrapHost(h)` — wraps a raw `host.Host` with default (empty) config.
 - `lp2p.WrapHostWithConfig(h, cfg, logger)` — wraps with bootstrap peers
   parsed from config.
-
-### AddReactor (runtime registration)
-
-Unlike the legacy switch where all reactors are registered at initialization,
-the lp2p switch's `AddReactor` supports runtime registration of custom reactors
-(e.g., MuSig2). When called, it:
-
-1. Adds the reactor to the reactor set
-2. Registers libp2p stream handlers for all the reactor's channel descriptors
-3. Sets the switch reference on the reactor
-4. Starts the reactor immediately if the switch is already active
 
 ### Host access
 
