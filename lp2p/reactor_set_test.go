@@ -59,8 +59,8 @@ func TestReactorSet(t *testing.T) {
 		assert.Same(t, reactorB, byNameB)
 
 		// check that B has a custom config
-		reactorItemB, _ := rs.getByName("B")
-		require.Contains(t, reactorItemB.consumerQueue.Scaler().String(), "999ms")
+		idxB := rs.reactorNames["B"]
+		require.Contains(t, rs.reactors[idxB].consumerQueue.Scaler().String(), "999ms")
 
 		// ACT + ASSERT #6: get by name D
 		byNameD, ok := rs.GetByName("D")
