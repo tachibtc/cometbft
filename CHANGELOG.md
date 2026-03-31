@@ -76,13 +76,12 @@
 - `[p2p]` feat(p2p): add adaptive sync for comet-p2p
   ([\#5705](https://github.com/cometbft/cometbft/pull/5705))
 
-### FEATURES
+### FEATURES For Tachi Metaprotocol
 
-- `[lp2p]` feat(lp2p): support pre-created libp2p host injection and custom reactor
-  registration. Add `WrapHost`/`WrapHostWithConfig` for wrapping existing hosts,
-  implement `Switch.AddReactor` for runtime reactor registration, add synchronous
+- `[lp2p]` feat(lp2p): support pre-created libp2p host injection
+    Add `WrapHost`/`WrapHostWithConfig` for wrapping existing hosts,
   `Switch.Broadcast`, and export `Switch.Host()` for direct libp2p access (KDHT/rendezvous).
-  [TACHI FORK]
+
 
 - `[p2p]` feat(lp2p): implemented resource limiter ([\#5671](https://github.com/cometbft/cometbft/pull/5671))
 - `[p2p]` feat(consensus): add adaptive sync blocksync-to-consensus ingestion ([\#5633](https://github.com/cometbft/cometbft/pull/5633))
