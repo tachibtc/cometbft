@@ -15,14 +15,14 @@ import (
 
 	dbm "github.com/cometbft/cometbft-db"
 
-	"github.com/cometbft/cometbft/libs/log"
-	cmtmath "github.com/cometbft/cometbft/libs/math"
-	cmtos "github.com/cometbft/cometbft/libs/os"
-	"github.com/cometbft/cometbft/light"
-	lproxy "github.com/cometbft/cometbft/light/proxy"
-	lrpc "github.com/cometbft/cometbft/light/rpc"
-	dbs "github.com/cometbft/cometbft/light/store/db"
-	rpcserver "github.com/cometbft/cometbft/rpc/jsonrpc/server"
+	"github.com/tachibtc/cometbft/libs/log"
+	cmtmath "github.com/tachibtc/cometbft/libs/math"
+	cmtos "github.com/tachibtc/cometbft/libs/os"
+	"github.com/tachibtc/cometbft/light"
+	lproxy "github.com/tachibtc/cometbft/light/proxy"
+	lrpc "github.com/tachibtc/cometbft/light/rpc"
+	dbs "github.com/tachibtc/cometbft/light/store/db"
+	rpcserver "github.com/tachibtc/cometbft/rpc/jsonrpc/server"
 )
 
 // LightCmd represents the base command when called without any subcommands

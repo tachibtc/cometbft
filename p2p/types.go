@@ -3,8 +3,8 @@ package p2p
 import (
 	"github.com/cosmos/gogoproto/proto"
 
-	"github.com/cometbft/cometbft/p2p/conn"
-	tmp2p "github.com/cometbft/cometbft/proto/tendermint/p2p"
+	"github.com/tachibtc/cometbft/p2p/conn"
+	tmp2p "github.com/tachibtc/cometbft/proto/tendermint/p2p"
 )
 
 type (

@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/cometbft/cometbft/consensus"
-	"github.com/cometbft/cometbft/types"
+	"github.com/tachibtc/cometbft/consensus"
+	"github.com/tachibtc/cometbft/types"
 )
 
 // BlockIngestor represents a reactor that can ingest blocks into the consensus state.

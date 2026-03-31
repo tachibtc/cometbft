@@ -10,16 +10,16 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/cometbft/cometbft/crypto"
-	"github.com/cometbft/cometbft/crypto/tmhash"
-	"github.com/cometbft/cometbft/internal/test"
-	cmtjson "github.com/cometbft/cometbft/libs/json"
-	"github.com/cometbft/cometbft/privval"
-	cmtproto "github.com/cometbft/cometbft/proto/tendermint/types"
-	cmtversion "github.com/cometbft/cometbft/proto/tendermint/version"
-	e2e "github.com/cometbft/cometbft/test/e2e/pkg"
-	"github.com/cometbft/cometbft/types"
-	"github.com/cometbft/cometbft/version"
+	"github.com/tachibtc/cometbft/crypto"
+	"github.com/tachibtc/cometbft/crypto/tmhash"
+	"github.com/tachibtc/cometbft/internal/test"
+	cmtjson "github.com/tachibtc/cometbft/libs/json"
+	"github.com/tachibtc/cometbft/privval"
+	cmtproto "github.com/tachibtc/cometbft/proto/tendermint/types"
+	cmtversion "github.com/tachibtc/cometbft/proto/tendermint/version"
+	e2e "github.com/tachibtc/cometbft/test/e2e/pkg"
+	"github.com/tachibtc/cometbft/types"
+	"github.com/tachibtc/cometbft/version"
 )
 
 // 1 in 4 evidence is light client evidence, the rest is duplicate vote evidence

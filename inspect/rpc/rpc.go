@@ -7,13 +7,13 @@ import (
 
 	"github.com/rs/cors"
 
-	"github.com/cometbft/cometbft/config"
-	"github.com/cometbft/cometbft/libs/log"
-	"github.com/cometbft/cometbft/rpc/core"
-	"github.com/cometbft/cometbft/rpc/jsonrpc/server"
-	"github.com/cometbft/cometbft/state"
-	"github.com/cometbft/cometbft/state/indexer"
-	"github.com/cometbft/cometbft/state/txindex"
+	"github.com/tachibtc/cometbft/config"
+	"github.com/tachibtc/cometbft/libs/log"
+	"github.com/tachibtc/cometbft/rpc/core"
+	"github.com/tachibtc/cometbft/rpc/jsonrpc/server"
+	"github.com/tachibtc/cometbft/state"
+	"github.com/tachibtc/cometbft/state/indexer"
+	"github.com/tachibtc/cometbft/state/txindex"
 )
 
 // Server defines parameters for running an Inspector rpc server.

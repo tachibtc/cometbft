@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/cometbft/cometbft/libs/log"
-	cmterrors "github.com/cometbft/cometbft/types/errors"
+	"github.com/tachibtc/cometbft/libs/log"
+	cmterrors "github.com/tachibtc/cometbft/types/errors"
 )
 
 const (

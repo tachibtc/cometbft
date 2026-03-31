@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/cometbft/cometbft/test/utils"
+	"github.com/tachibtc/cometbft/test/utils"
 	"github.com/stretchr/testify/require"
 )
 

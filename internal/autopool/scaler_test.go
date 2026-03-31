@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/cometbft/cometbft/libs/log"
+	"github.com/tachibtc/cometbft/libs/log"
 	"github.com/stretchr/testify/require"
 )
 

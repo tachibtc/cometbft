@@ -10,11 +10,11 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/cometbft/cometbft/libs/log"
-	e2e "github.com/cometbft/cometbft/test/e2e/pkg"
-	"github.com/cometbft/cometbft/test/e2e/pkg/infra"
-	"github.com/cometbft/cometbft/test/e2e/pkg/infra/digitalocean"
-	"github.com/cometbft/cometbft/test/e2e/pkg/infra/docker"
+	"github.com/tachibtc/cometbft/libs/log"
+	e2e "github.com/tachibtc/cometbft/test/e2e/pkg"
+	"github.com/tachibtc/cometbft/test/e2e/pkg/infra"
+	"github.com/tachibtc/cometbft/test/e2e/pkg/infra/digitalocean"
+	"github.com/tachibtc/cometbft/test/e2e/pkg/infra/docker"
 )
 
 const randomSeed = 2308084734268

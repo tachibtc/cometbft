@@ -7,16 +7,16 @@ import (
 	"fmt"
 	"time"
 
-	abci "github.com/cometbft/cometbft/abci/types"
-	"github.com/cometbft/cometbft/config"
-	"github.com/cometbft/cometbft/libs/log"
-	cmtsync "github.com/cometbft/cometbft/libs/sync"
-	"github.com/cometbft/cometbft/light"
-	"github.com/cometbft/cometbft/p2p"
-	ssproto "github.com/cometbft/cometbft/proto/tendermint/statesync"
-	"github.com/cometbft/cometbft/proxy"
-	sm "github.com/cometbft/cometbft/state"
-	"github.com/cometbft/cometbft/types"
+	abci "github.com/tachibtc/cometbft/abci/types"
+	"github.com/tachibtc/cometbft/config"
+	"github.com/tachibtc/cometbft/libs/log"
+	cmtsync "github.com/tachibtc/cometbft/libs/sync"
+	"github.com/tachibtc/cometbft/light"
+	"github.com/tachibtc/cometbft/p2p"
+	ssproto "github.com/tachibtc/cometbft/proto/tendermint/statesync"
+	"github.com/tachibtc/cometbft/proxy"
+	sm "github.com/tachibtc/cometbft/state"
+	"github.com/tachibtc/cometbft/types"
 )
 
 const (

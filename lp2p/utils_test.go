@@ -3,9 +3,9 @@ package lp2p
 import (
 	"testing"
 
-	"github.com/cometbft/cometbft/abci/types"
-	"github.com/cometbft/cometbft/crypto/ed25519"
-	"github.com/cometbft/cometbft/crypto/secp256k1"
+	"github.com/tachibtc/cometbft/abci/types"
+	"github.com/tachibtc/cometbft/crypto/ed25519"
+	"github.com/tachibtc/cometbft/crypto/secp256k1"
 	"github.com/cosmos/gogoproto/proto"
 	"github.com/stretchr/testify/require"
 )
