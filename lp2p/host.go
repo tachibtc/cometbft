@@ -52,7 +52,7 @@ const TransportQUIC = "quic-v1"
 
 
 // WrapHost wraps an existing libp2p host.Host as a CometBFT lp2p.Host.
-// [For Tachi Metaprotocol] Used to pass a pre-created host (with KDHT running) to CometBFT.
+// For Tachi Metaprotocol we need to pass a pre-created host (with KDHT running) to CometBFT.
 func WrapHost(h host.Host) *Host {
 	return &Host{
 		Host:           h,
@@ -60,8 +60,7 @@ func WrapHost(h host.Host) *Host {
 	}
 }
 
-// WrapHostWithConfig wraps a host and parses bootstrap peers from config.
-// [For Tachi Metaprotocol]
+// WrapHostWithConfig wraps a host and parses bootstrap peers from config for tachi metaprotocol
 func WrapHostWithConfig(h host.Host, cfg config.LibP2PConfig, logger log.Logger) (*Host, error) {
 	peers, err := BootstrapPeersFromConfig(cfg)
 	if err != nil {

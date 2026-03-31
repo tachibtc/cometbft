@@ -153,7 +153,7 @@ func StateProvider(stateProvider statesync.StateProvider) Option {
 	}
 }
 
-// [For Tachi Metaprotocol] Package-level pre-created host for KDHT discovery before CometBFT starts.
+// For Tachi Metaprotocol Package-level pre-created host for KDHT discovery before CometBFT starts.
 var preCreatedLibP2PHost *lp2p.Host
 
 // SetPreCreatedLibP2PHost sets a pre-created lp2p.Host that NewNode will use
@@ -571,7 +571,7 @@ func NewNodeWithContext(
 			reactors = reactors[1:]
 		}
 
-		// [For Tachi Metaprotocol] Use pre-created host if available (for KDHT discovery before consensus)
+		// For Tachi Metaprotocol we need to use pre-created host if available (for KDHT discovery before consensus)
 		var host *lp2p.Host
 		if preCreatedLibP2PHost != nil {
 			host = preCreatedLibP2PHost
