@@ -17,18 +17,18 @@ import (
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
 
-	abciclient "github.com/cometbft/cometbft/abci/client"
-	abciclimocks "github.com/cometbft/cometbft/abci/client/mocks"
-	"github.com/cometbft/cometbft/abci/example/kvstore"
-	abciserver "github.com/cometbft/cometbft/abci/server"
-	abci "github.com/cometbft/cometbft/abci/types"
-	"github.com/cometbft/cometbft/config"
-	"github.com/cometbft/cometbft/internal/test"
-	"github.com/cometbft/cometbft/libs/log"
-	cmtrand "github.com/cometbft/cometbft/libs/rand"
-	"github.com/cometbft/cometbft/libs/service"
-	"github.com/cometbft/cometbft/proxy"
-	"github.com/cometbft/cometbft/types"
+	abciclient "github.com/tachibtc/cometbft/abci/client"
+	abciclimocks "github.com/tachibtc/cometbft/abci/client/mocks"
+	"github.com/tachibtc/cometbft/abci/example/kvstore"
+	abciserver "github.com/tachibtc/cometbft/abci/server"
+	abci "github.com/tachibtc/cometbft/abci/types"
+	"github.com/tachibtc/cometbft/config"
+	"github.com/tachibtc/cometbft/internal/test"
+	"github.com/tachibtc/cometbft/libs/log"
+	cmtrand "github.com/tachibtc/cometbft/libs/rand"
+	"github.com/tachibtc/cometbft/libs/service"
+	"github.com/tachibtc/cometbft/proxy"
+	"github.com/tachibtc/cometbft/types"
 )
 
 // A cleanupFunc cleans up any config / test files created for a particular
@@ -970,7 +970,7 @@ func TestMempoolAsyncRecheckTxReturnError(t *testing.T) {
 	mockClient.AssertExpectations(t)
 }
 
-// This test used to cause a data race when rechecking (see https://github.com/cometbft/cometbft/issues/1827).
+// This test used to cause a data race when rechecking (see https://github.com/tachibtc/cometbft/issues/1827).
 func TestMempoolRecheckRace(t *testing.T) {
 	mp, cleanup := newMempoolWithAsyncConnection(t)
 	defer cleanup()

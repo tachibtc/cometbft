@@ -9,16 +9,16 @@ import (
 
 	dbm "github.com/cometbft/cometbft-db"
 
-	abcitypes "github.com/cometbft/cometbft/abci/types"
-	cmtcfg "github.com/cometbft/cometbft/config"
-	"github.com/cometbft/cometbft/libs/progressbar"
-	"github.com/cometbft/cometbft/state"
-	"github.com/cometbft/cometbft/state/indexer"
-	blockidxkv "github.com/cometbft/cometbft/state/indexer/block/kv"
-	"github.com/cometbft/cometbft/state/indexer/sink/psql"
-	"github.com/cometbft/cometbft/state/txindex"
-	"github.com/cometbft/cometbft/state/txindex/kv"
-	"github.com/cometbft/cometbft/types"
+	abcitypes "github.com/tachibtc/cometbft/abci/types"
+	cmtcfg "github.com/tachibtc/cometbft/config"
+	"github.com/tachibtc/cometbft/libs/progressbar"
+	"github.com/tachibtc/cometbft/state"
+	"github.com/tachibtc/cometbft/state/indexer"
+	blockidxkv "github.com/tachibtc/cometbft/state/indexer/block/kv"
+	"github.com/tachibtc/cometbft/state/indexer/sink/psql"
+	"github.com/tachibtc/cometbft/state/txindex"
+	"github.com/tachibtc/cometbft/state/txindex/kv"
+	"github.com/tachibtc/cometbft/types"
 )
 
 const (

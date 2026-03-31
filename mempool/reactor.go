@@ -7,12 +7,12 @@ import (
 	"sync/atomic"
 	"time"
 
-	cfg "github.com/cometbft/cometbft/config"
-	"github.com/cometbft/cometbft/libs/clist"
-	"github.com/cometbft/cometbft/libs/log"
-	"github.com/cometbft/cometbft/p2p"
-	protomem "github.com/cometbft/cometbft/proto/tendermint/mempool"
-	"github.com/cometbft/cometbft/types"
+	cfg "github.com/tachibtc/cometbft/config"
+	"github.com/tachibtc/cometbft/libs/clist"
+	"github.com/tachibtc/cometbft/libs/log"
+	"github.com/tachibtc/cometbft/p2p"
+	protomem "github.com/tachibtc/cometbft/proto/tendermint/mempool"
+	"github.com/tachibtc/cometbft/types"
 	"golang.org/x/sync/semaphore"
 )
 
@@ -279,7 +279,7 @@ func (memR *Reactor) broadcastTxRoutine(peer p2p.Peer) {
 		// reduces the mempool size and the recheck-tx rate of the receiving
 		// node. See [RFC 103] for an analysis on this optimization.
 		//
-		// [RFC 103]: https://github.com/cometbft/cometbft/pull/735
+		// [RFC 103]: https://github.com/tachibtc/cometbft/pull/735
 		memTx := next.Value.(*mempoolTx)
 		if peerState.GetHeight() < memTx.Height()-1 {
 			time.Sleep(PeerCatchupSleepIntervalMS * time.Millisecond)

@@ -15,14 +15,14 @@ import (
 
 	"github.com/BurntSushi/toml"
 
-	"github.com/cometbft/cometbft/config"
-	"github.com/cometbft/cometbft/crypto/ed25519"
-	"github.com/cometbft/cometbft/lp2p"
-	"github.com/cometbft/cometbft/p2p"
-	"github.com/cometbft/cometbft/privval"
-	e2e "github.com/cometbft/cometbft/test/e2e/pkg"
-	"github.com/cometbft/cometbft/test/e2e/pkg/infra"
-	"github.com/cometbft/cometbft/types"
+	"github.com/tachibtc/cometbft/config"
+	"github.com/tachibtc/cometbft/crypto/ed25519"
+	"github.com/tachibtc/cometbft/lp2p"
+	"github.com/tachibtc/cometbft/p2p"
+	"github.com/tachibtc/cometbft/privval"
+	e2e "github.com/tachibtc/cometbft/test/e2e/pkg"
+	"github.com/tachibtc/cometbft/test/e2e/pkg/infra"
+	"github.com/tachibtc/cometbft/types"
 )
 
 const (

@@ -14,9 +14,9 @@ import (
 	"github.com/cosmos/gogoproto/proto"
 	"github.com/lib/pq"
 
-	abci "github.com/cometbft/cometbft/abci/types"
-	"github.com/cometbft/cometbft/libs/pubsub/query"
-	"github.com/cometbft/cometbft/types"
+	abci "github.com/tachibtc/cometbft/abci/types"
+	"github.com/tachibtc/cometbft/libs/pubsub/query"
+	"github.com/tachibtc/cometbft/types"
 )
 
 const (

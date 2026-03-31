@@ -11,10 +11,10 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/cometbft/cometbft/libs/log"
-	"github.com/cometbft/cometbft/libs/protoio"
-	tmp2p "github.com/cometbft/cometbft/proto/tendermint/p2p"
-	"github.com/cometbft/cometbft/proto/tendermint/types"
+	"github.com/tachibtc/cometbft/libs/log"
+	"github.com/tachibtc/cometbft/libs/protoio"
+	tmp2p "github.com/tachibtc/cometbft/proto/tendermint/p2p"
+	"github.com/tachibtc/cometbft/proto/tendermint/types"
 )
 
 const maxPingPongPacketSize = 1024 // bytes

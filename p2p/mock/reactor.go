@@ -1,9 +1,9 @@
 package mock
 
 import (
-	"github.com/cometbft/cometbft/libs/log"
-	"github.com/cometbft/cometbft/p2p"
-	"github.com/cometbft/cometbft/p2p/conn"
+	"github.com/tachibtc/cometbft/libs/log"
+	"github.com/tachibtc/cometbft/p2p"
+	"github.com/tachibtc/cometbft/p2p/conn"
 )
 
 type Reactor struct {

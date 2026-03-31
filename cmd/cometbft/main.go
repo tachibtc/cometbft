@@ -4,11 +4,11 @@ import (
 	"os"
 	"path/filepath"
 
-	cmd "github.com/cometbft/cometbft/cmd/cometbft/commands"
-	"github.com/cometbft/cometbft/cmd/cometbft/commands/debug"
-	cfg "github.com/cometbft/cometbft/config"
-	"github.com/cometbft/cometbft/libs/cli"
-	nm "github.com/cometbft/cometbft/node"
+	cmd "github.com/tachibtc/cometbft/cmd/cometbft/commands"
+	"github.com/tachibtc/cometbft/cmd/cometbft/commands/debug"
+	cfg "github.com/tachibtc/cometbft/config"
+	"github.com/tachibtc/cometbft/libs/cli"
+	nm "github.com/tachibtc/cometbft/node"
 )
 
 func main() {

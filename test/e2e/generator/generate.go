@@ -13,13 +13,13 @@ import (
 	"github.com/go-git/go-git/v5"
 	"github.com/go-git/go-git/v5/plumbing/object"
 
-	"github.com/cometbft/cometbft/crypto/bls12381"
-	"github.com/cometbft/cometbft/crypto/ed25519"
-	"github.com/cometbft/cometbft/crypto/mldsa65"
-	"github.com/cometbft/cometbft/crypto/secp256k1"
-	"github.com/cometbft/cometbft/crypto/secp256k1eth"
-	e2e "github.com/cometbft/cometbft/test/e2e/pkg"
-	"github.com/cometbft/cometbft/version"
+	"github.com/tachibtc/cometbft/crypto/bls12381"
+	"github.com/tachibtc/cometbft/crypto/ed25519"
+	"github.com/tachibtc/cometbft/crypto/mldsa65"
+	"github.com/tachibtc/cometbft/crypto/secp256k1"
+	"github.com/tachibtc/cometbft/crypto/secp256k1eth"
+	e2e "github.com/tachibtc/cometbft/test/e2e/pkg"
+	"github.com/tachibtc/cometbft/version"
 )
 
 // optLarge is the shared "large" choice token used by both the topology and

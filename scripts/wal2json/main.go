@@ -12,8 +12,8 @@ import (
 	"io"
 	"os"
 
-	cs "github.com/cometbft/cometbft/consensus"
-	cmtjson "github.com/cometbft/cometbft/libs/json"
+	cs "github.com/tachibtc/cometbft/consensus"
+	cmtjson "github.com/tachibtc/cometbft/libs/json"
 )
 
 func main() {

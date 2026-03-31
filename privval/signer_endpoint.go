@@ -5,11 +5,11 @@ import (
 	"net"
 	"time"
 
-	"github.com/cometbft/cometbft/libs/protoio"
-	"github.com/cometbft/cometbft/libs/service"
-	cmtsync "github.com/cometbft/cometbft/libs/sync"
-	privvalproto "github.com/cometbft/cometbft/proto/tendermint/privval"
-	"github.com/cometbft/cometbft/types"
+	"github.com/tachibtc/cometbft/libs/protoio"
+	"github.com/tachibtc/cometbft/libs/service"
+	cmtsync "github.com/tachibtc/cometbft/libs/sync"
+	privvalproto "github.com/tachibtc/cometbft/proto/tendermint/privval"
+	"github.com/tachibtc/cometbft/types"
 )
 
 const (

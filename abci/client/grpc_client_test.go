@@ -14,10 +14,10 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 
-	abcicli "github.com/cometbft/cometbft/abci/client"
-	abciserver "github.com/cometbft/cometbft/abci/server"
-	"github.com/cometbft/cometbft/abci/types"
-	"github.com/cometbft/cometbft/libs/log"
+	abcicli "github.com/tachibtc/cometbft/abci/client"
+	abciserver "github.com/tachibtc/cometbft/abci/server"
+	"github.com/tachibtc/cometbft/abci/types"
+	"github.com/tachibtc/cometbft/libs/log"
 )
 
 func TestGRPCResponseCallbackNoDeadlock(t *testing.T) {

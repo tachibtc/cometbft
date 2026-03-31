@@ -1,6 +1,6 @@
 package types
 
-import cmtproto "github.com/cometbft/cometbft/proto/tendermint/types"
+import cmtproto "github.com/tachibtc/cometbft/proto/tendermint/types"
 
 // Short lowercase descriptors for SignedMsgType values; exported so tests and
 // callers can reuse them.

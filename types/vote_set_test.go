@@ -7,10 +7,10 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/cometbft/cometbft/crypto"
-	cmtrand "github.com/cometbft/cometbft/libs/rand"
-	cmtproto "github.com/cometbft/cometbft/proto/tendermint/types"
-	cmttime "github.com/cometbft/cometbft/types/time"
+	"github.com/tachibtc/cometbft/crypto"
+	cmtrand "github.com/tachibtc/cometbft/libs/rand"
+	cmtproto "github.com/tachibtc/cometbft/proto/tendermint/types"
+	cmttime "github.com/tachibtc/cometbft/types/time"
 )
 
 func TestVoteSet_AddVote_Good(t *testing.T) {

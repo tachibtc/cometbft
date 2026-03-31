@@ -12,11 +12,11 @@ import (
 
 	db "github.com/cometbft/cometbft-db"
 
-	abci "github.com/cometbft/cometbft/abci/types"
-	"github.com/cometbft/cometbft/libs/pubsub/query"
-	cmtrand "github.com/cometbft/cometbft/libs/rand"
-	"github.com/cometbft/cometbft/state/txindex"
-	"github.com/cometbft/cometbft/types"
+	abci "github.com/tachibtc/cometbft/abci/types"
+	"github.com/tachibtc/cometbft/libs/pubsub/query"
+	cmtrand "github.com/tachibtc/cometbft/libs/rand"
+	"github.com/tachibtc/cometbft/state/txindex"
+	"github.com/tachibtc/cometbft/types"
 )
 
 func TestTxIndex(t *testing.T) {

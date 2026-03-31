@@ -4,10 +4,10 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/cometbft/cometbft/abci/types"
-	"github.com/cometbft/cometbft/libs/log"
-	cmtpubsub "github.com/cometbft/cometbft/libs/pubsub"
-	"github.com/cometbft/cometbft/libs/service"
+	"github.com/tachibtc/cometbft/abci/types"
+	"github.com/tachibtc/cometbft/libs/log"
+	cmtpubsub "github.com/tachibtc/cometbft/libs/pubsub"
+	"github.com/tachibtc/cometbft/libs/service"
 )
 
 const defaultCapacity = 0

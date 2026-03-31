@@ -6,10 +6,10 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/cometbft/cometbft/abci/example/kvstore"
-	abci "github.com/cometbft/cometbft/abci/types"
-	"github.com/cometbft/cometbft/proxy"
-	"github.com/cometbft/cometbft/types"
+	"github.com/tachibtc/cometbft/abci/example/kvstore"
+	abci "github.com/tachibtc/cometbft/abci/types"
+	"github.com/tachibtc/cometbft/proxy"
+	"github.com/tachibtc/cometbft/types"
 	"github.com/stretchr/testify/require"
 )
 

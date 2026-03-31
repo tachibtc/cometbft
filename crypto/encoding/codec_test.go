@@ -6,10 +6,10 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/cometbft/cometbft/crypto/bls12381"
-	"github.com/cometbft/cometbft/crypto/ed25519"
-	"github.com/cometbft/cometbft/crypto/secp256k1"
-	"github.com/cometbft/cometbft/crypto/secp256k1eth"
+	"github.com/tachibtc/cometbft/crypto/bls12381"
+	"github.com/tachibtc/cometbft/crypto/ed25519"
+	"github.com/tachibtc/cometbft/crypto/secp256k1"
+	"github.com/tachibtc/cometbft/crypto/secp256k1eth"
 )
 
 func TestPubKeyToFromProto(t *testing.T) {

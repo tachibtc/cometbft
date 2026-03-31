@@ -9,9 +9,9 @@ import (
 
 	"github.com/spf13/cobra"
 
-	cfg "github.com/cometbft/cometbft/config"
-	cmtos "github.com/cometbft/cometbft/libs/os"
-	nm "github.com/cometbft/cometbft/node"
+	cfg "github.com/tachibtc/cometbft/config"
+	cmtos "github.com/tachibtc/cometbft/libs/os"
+	nm "github.com/tachibtc/cometbft/node"
 )
 
 var genesisHash []byte

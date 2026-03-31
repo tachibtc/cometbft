@@ -6,10 +6,10 @@ import (
 	"net"
 	"strings"
 
-	"github.com/cometbft/cometbft/crypto"
-	"github.com/cometbft/cometbft/crypto/ed25519"
-	"github.com/cometbft/cometbft/libs/log"
-	cmtnet "github.com/cometbft/cometbft/libs/net"
+	"github.com/tachibtc/cometbft/crypto"
+	"github.com/tachibtc/cometbft/crypto/ed25519"
+	"github.com/tachibtc/cometbft/libs/log"
+	cmtnet "github.com/tachibtc/cometbft/libs/net"
 	"github.com/libp2p/go-libp2p/core/peer"
 )
 

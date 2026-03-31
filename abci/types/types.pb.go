@@ -6,8 +6,8 @@ package types
 import (
 	context "context"
 	fmt "fmt"
-	crypto "github.com/cometbft/cometbft/proto/tendermint/crypto"
-	types1 "github.com/cometbft/cometbft/proto/tendermint/types"
+	crypto "github.com/tachibtc/cometbft/proto/tendermint/crypto"
+	types1 "github.com/tachibtc/cometbft/proto/tendermint/types"
 	_ "github.com/cosmos/gogoproto/gogoproto"
 	grpc1 "github.com/cosmos/gogoproto/grpc"
 	proto "github.com/cosmos/gogoproto/proto"

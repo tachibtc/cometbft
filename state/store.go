@@ -9,12 +9,12 @@ import (
 
 	dbm "github.com/cometbft/cometbft-db"
 
-	abci "github.com/cometbft/cometbft/abci/types"
-	cmtmath "github.com/cometbft/cometbft/libs/math"
-	cmtos "github.com/cometbft/cometbft/libs/os"
-	cmtstate "github.com/cometbft/cometbft/proto/tendermint/state"
-	cmtproto "github.com/cometbft/cometbft/proto/tendermint/types"
-	"github.com/cometbft/cometbft/types"
+	abci "github.com/tachibtc/cometbft/abci/types"
+	cmtmath "github.com/tachibtc/cometbft/libs/math"
+	cmtos "github.com/tachibtc/cometbft/libs/os"
+	cmtstate "github.com/tachibtc/cometbft/proto/tendermint/state"
+	cmtproto "github.com/tachibtc/cometbft/proto/tendermint/types"
+	"github.com/tachibtc/cometbft/types"
 )
 
 const (

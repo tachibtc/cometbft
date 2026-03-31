@@ -7,7 +7,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/cometbft/cometbft/types"
+	"github.com/tachibtc/cometbft/types"
 )
 
 func Validator(_ context.Context, votingPower int64) (*types.Validator, types.PrivValidator, error) {

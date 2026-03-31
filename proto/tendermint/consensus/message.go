@@ -5,7 +5,7 @@ import (
 
 	"github.com/cosmos/gogoproto/proto"
 
-	"github.com/cometbft/cometbft/p2p"
+	"github.com/tachibtc/cometbft/p2p"
 )
 
 var (

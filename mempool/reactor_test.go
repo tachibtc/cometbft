@@ -12,14 +12,14 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/cometbft/cometbft/abci/example/kvstore"
-	abci "github.com/cometbft/cometbft/abci/types"
-	cfg "github.com/cometbft/cometbft/config"
-	"github.com/cometbft/cometbft/libs/log"
-	"github.com/cometbft/cometbft/p2p"
-	memproto "github.com/cometbft/cometbft/proto/tendermint/mempool"
-	"github.com/cometbft/cometbft/proxy"
-	"github.com/cometbft/cometbft/types"
+	"github.com/tachibtc/cometbft/abci/example/kvstore"
+	abci "github.com/tachibtc/cometbft/abci/types"
+	cfg "github.com/tachibtc/cometbft/config"
+	"github.com/tachibtc/cometbft/libs/log"
+	"github.com/tachibtc/cometbft/p2p"
+	memproto "github.com/tachibtc/cometbft/proto/tendermint/mempool"
+	"github.com/tachibtc/cometbft/proxy"
+	"github.com/tachibtc/cometbft/types"
 )
 
 const (
@@ -62,7 +62,7 @@ func TestReactorBroadcastTxsMessage(t *testing.T) {
 	waitForTxsOnReactors(t, txs, reactors)
 }
 
-// regression test for https://github.com/cometbft/cometbft/issues/5408
+// regression test for https://github.com/tachibtc/cometbft/issues/5408
 func TestReactorConcurrency(t *testing.T) {
 	config := cfg.TestConfig()
 	const N = 2

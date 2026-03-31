@@ -9,7 +9,7 @@ import (
 	"reflect"
 	"strings"
 
-	cmtjson "github.com/cometbft/cometbft/libs/json"
+	cmtjson "github.com/tachibtc/cometbft/libs/json"
 )
 
 // a wrapper to emulate a sum type: jsonrpcid = string | int

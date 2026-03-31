@@ -5,14 +5,14 @@ import (
 	"net"
 	"time"
 
-	"github.com/cometbft/cometbft/crypto"
-	"github.com/cometbft/cometbft/crypto/ed25519"
-	"github.com/cometbft/cometbft/libs/log"
-	cmtnet "github.com/cometbft/cometbft/libs/net"
-	cmtrand "github.com/cometbft/cometbft/libs/rand"
+	"github.com/tachibtc/cometbft/crypto"
+	"github.com/tachibtc/cometbft/crypto/ed25519"
+	"github.com/tachibtc/cometbft/libs/log"
+	cmtnet "github.com/tachibtc/cometbft/libs/net"
+	cmtrand "github.com/tachibtc/cometbft/libs/rand"
 
-	"github.com/cometbft/cometbft/config"
-	"github.com/cometbft/cometbft/p2p/conn"
+	"github.com/tachibtc/cometbft/config"
+	"github.com/tachibtc/cometbft/p2p/conn"
 )
 
 const testCh = 0x01

@@ -10,13 +10,13 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/cometbft/cometbft/abci/example/kvstore"
-	"github.com/cometbft/cometbft/light/provider"
-	lighthttp "github.com/cometbft/cometbft/light/provider/http"
-	rpcclient "github.com/cometbft/cometbft/rpc/client"
-	rpchttp "github.com/cometbft/cometbft/rpc/client/http"
-	rpctest "github.com/cometbft/cometbft/rpc/test"
-	"github.com/cometbft/cometbft/types"
+	"github.com/tachibtc/cometbft/abci/example/kvstore"
+	"github.com/tachibtc/cometbft/light/provider"
+	lighthttp "github.com/tachibtc/cometbft/light/provider/http"
+	rpcclient "github.com/tachibtc/cometbft/rpc/client"
+	rpchttp "github.com/tachibtc/cometbft/rpc/client/http"
+	rpctest "github.com/tachibtc/cometbft/rpc/test"
+	"github.com/tachibtc/cometbft/types"
 )
 
 func TestNewProvider(t *testing.T) {

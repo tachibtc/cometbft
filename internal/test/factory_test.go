@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/cometbft/cometbft/types"
+	"github.com/tachibtc/cometbft/types"
 )
 
 func TestMakeHeader(t *testing.T) {

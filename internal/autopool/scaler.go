@@ -7,7 +7,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/cometbft/cometbft/libs/log"
+	"github.com/tachibtc/cometbft/libs/log"
 )
 
 // ThroughputLatencyScaler is a scaler that scales the number of workers based on throughput

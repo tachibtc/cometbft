@@ -10,13 +10,13 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/cometbft/cometbft/crypto/ed25519"
-	"github.com/cometbft/cometbft/crypto/tmhash"
-	cmtjson "github.com/cometbft/cometbft/libs/json"
-	cmtrand "github.com/cometbft/cometbft/libs/rand"
-	cmtproto "github.com/cometbft/cometbft/proto/tendermint/types"
-	"github.com/cometbft/cometbft/types"
-	cmttime "github.com/cometbft/cometbft/types/time"
+	"github.com/tachibtc/cometbft/crypto/ed25519"
+	"github.com/tachibtc/cometbft/crypto/tmhash"
+	cmtjson "github.com/tachibtc/cometbft/libs/json"
+	cmtrand "github.com/tachibtc/cometbft/libs/rand"
+	cmtproto "github.com/tachibtc/cometbft/proto/tendermint/types"
+	"github.com/tachibtc/cometbft/types"
+	cmttime "github.com/tachibtc/cometbft/types/time"
 )
 
 func TestGenLoadValidator(t *testing.T) {

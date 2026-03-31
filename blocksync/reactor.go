@@ -8,13 +8,13 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/cometbft/cometbft/crypto"
-	"github.com/cometbft/cometbft/libs/log"
-	"github.com/cometbft/cometbft/p2p"
-	bcproto "github.com/cometbft/cometbft/proto/tendermint/blocksync"
-	sm "github.com/cometbft/cometbft/state"
-	"github.com/cometbft/cometbft/store"
-	"github.com/cometbft/cometbft/types"
+	"github.com/tachibtc/cometbft/crypto"
+	"github.com/tachibtc/cometbft/libs/log"
+	"github.com/tachibtc/cometbft/p2p"
+	bcproto "github.com/tachibtc/cometbft/proto/tendermint/blocksync"
+	sm "github.com/tachibtc/cometbft/state"
+	"github.com/tachibtc/cometbft/store"
+	"github.com/tachibtc/cometbft/types"
 )
 
 // BlocksyncChannel is a channel for blocks and status updates (`BlockStore` height)

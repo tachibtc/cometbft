@@ -5,8 +5,8 @@ package consensus
 
 import (
 	fmt "fmt"
-	bits "github.com/cometbft/cometbft/proto/tendermint/libs/bits"
-	types "github.com/cometbft/cometbft/proto/tendermint/types"
+	bits "github.com/tachibtc/cometbft/proto/tendermint/libs/bits"
+	types "github.com/tachibtc/cometbft/proto/tendermint/types"
 	_ "github.com/cosmos/gogoproto/gogoproto"
 	proto "github.com/cosmos/gogoproto/proto"
 	io "io"

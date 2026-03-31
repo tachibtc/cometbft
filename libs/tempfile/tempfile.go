@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	cmtsync "github.com/cometbft/cometbft/libs/sync"
+	cmtsync "github.com/tachibtc/cometbft/libs/sync"
 )
 
 const (
