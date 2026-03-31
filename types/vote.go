@@ -6,10 +6,10 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/cometbft/cometbft/crypto"
-	cmtbytes "github.com/cometbft/cometbft/libs/bytes"
-	"github.com/cometbft/cometbft/libs/protoio"
-	cmtproto "github.com/cometbft/cometbft/proto/tendermint/types"
+	"github.com/tachibtc/cometbft/crypto"
+	cmtbytes "github.com/tachibtc/cometbft/libs/bytes"
+	"github.com/tachibtc/cometbft/libs/protoio"
+	cmtproto "github.com/tachibtc/cometbft/proto/tendermint/types"
 )
 
 const (

@@ -11,9 +11,9 @@ import (
 
 	blst "github.com/supranational/blst/bindings/go"
 
-	"github.com/cometbft/cometbft/crypto"
-	"github.com/cometbft/cometbft/crypto/tmhash"
-	cmtjson "github.com/cometbft/cometbft/libs/json"
+	"github.com/tachibtc/cometbft/crypto"
+	"github.com/tachibtc/cometbft/crypto/tmhash"
+	cmtjson "github.com/tachibtc/cometbft/libs/json"
 )
 
 const (

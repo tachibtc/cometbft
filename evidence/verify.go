@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/cometbft/cometbft/light"
-	"github.com/cometbft/cometbft/types"
+	"github.com/tachibtc/cometbft/light"
+	"github.com/tachibtc/cometbft/types"
 )
 
 // verify verifies the evidence fully by checking:

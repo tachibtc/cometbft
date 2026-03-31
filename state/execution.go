@@ -7,14 +7,14 @@ import (
 	"sync/atomic"
 	"time"
 
-	abci "github.com/cometbft/cometbft/abci/types"
-	cryptoenc "github.com/cometbft/cometbft/crypto/encoding"
-	"github.com/cometbft/cometbft/libs/fail"
-	"github.com/cometbft/cometbft/libs/log"
-	"github.com/cometbft/cometbft/mempool"
-	cmtproto "github.com/cometbft/cometbft/proto/tendermint/types"
-	"github.com/cometbft/cometbft/proxy"
-	"github.com/cometbft/cometbft/types"
+	abci "github.com/tachibtc/cometbft/abci/types"
+	cryptoenc "github.com/tachibtc/cometbft/crypto/encoding"
+	"github.com/tachibtc/cometbft/libs/fail"
+	"github.com/tachibtc/cometbft/libs/log"
+	"github.com/tachibtc/cometbft/mempool"
+	cmtproto "github.com/tachibtc/cometbft/proto/tendermint/types"
+	"github.com/tachibtc/cometbft/proxy"
+	"github.com/tachibtc/cometbft/types"
 )
 
 //-----------------------------------------------------------------------------

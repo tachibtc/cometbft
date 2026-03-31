@@ -3,14 +3,14 @@ package light_test
 import (
 	"time"
 
-	"github.com/cometbft/cometbft/crypto"
-	"github.com/cometbft/cometbft/crypto/ed25519"
-	"github.com/cometbft/cometbft/crypto/tmhash"
-	cmtproto "github.com/cometbft/cometbft/proto/tendermint/types"
-	cmtversion "github.com/cometbft/cometbft/proto/tendermint/version"
-	"github.com/cometbft/cometbft/types"
-	cmttime "github.com/cometbft/cometbft/types/time"
-	"github.com/cometbft/cometbft/version"
+	"github.com/tachibtc/cometbft/crypto"
+	"github.com/tachibtc/cometbft/crypto/ed25519"
+	"github.com/tachibtc/cometbft/crypto/tmhash"
+	cmtproto "github.com/tachibtc/cometbft/proto/tendermint/types"
+	cmtversion "github.com/tachibtc/cometbft/proto/tendermint/version"
+	"github.com/tachibtc/cometbft/types"
+	cmttime "github.com/tachibtc/cometbft/types/time"
+	"github.com/tachibtc/cometbft/version"
 )
 
 // privKeys is a helper type for testing.

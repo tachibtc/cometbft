@@ -10,13 +10,13 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/cometbft/cometbft/crypto/merkle"
-	"github.com/cometbft/cometbft/libs/bits"
-	cmtrand "github.com/cometbft/cometbft/libs/rand"
-	"github.com/cometbft/cometbft/p2p"
-	cmtcons "github.com/cometbft/cometbft/proto/tendermint/consensus"
-	cmtproto "github.com/cometbft/cometbft/proto/tendermint/types"
-	"github.com/cometbft/cometbft/types"
+	"github.com/tachibtc/cometbft/crypto/merkle"
+	"github.com/tachibtc/cometbft/libs/bits"
+	cmtrand "github.com/tachibtc/cometbft/libs/rand"
+	"github.com/tachibtc/cometbft/p2p"
+	cmtcons "github.com/tachibtc/cometbft/proto/tendermint/consensus"
+	cmtproto "github.com/tachibtc/cometbft/proto/tendermint/types"
+	"github.com/tachibtc/cometbft/types"
 )
 
 func TestMsgToProto(t *testing.T) {

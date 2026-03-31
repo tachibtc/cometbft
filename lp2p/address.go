@@ -7,8 +7,8 @@ import (
 	"strconv"
 	"strings"
 
-	cmcrypto "github.com/cometbft/cometbft/crypto"
-	"github.com/cometbft/cometbft/p2p"
+	cmcrypto "github.com/tachibtc/cometbft/crypto"
+	"github.com/tachibtc/cometbft/p2p"
 	"github.com/libp2p/go-libp2p/core/peer"
 	ma "github.com/multiformats/go-multiaddr"
 	manet "github.com/multiformats/go-multiaddr/net"

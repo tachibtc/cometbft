@@ -7,9 +7,9 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	cmtproto "github.com/cometbft/cometbft/proto/tendermint/types"
-	sm "github.com/cometbft/cometbft/state"
-	"github.com/cometbft/cometbft/types"
+	cmtproto "github.com/tachibtc/cometbft/proto/tendermint/types"
+	sm "github.com/tachibtc/cometbft/state"
+	"github.com/tachibtc/cometbft/types"
 )
 
 func TestStateIngestVerifiedBlock(t *testing.T) {

@@ -11,9 +11,9 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 
-	abciserver "github.com/cometbft/cometbft/abci/server"
-	"github.com/cometbft/cometbft/abci/types"
-	"github.com/cometbft/cometbft/libs/log"
+	abciserver "github.com/tachibtc/cometbft/abci/server"
+	"github.com/tachibtc/cometbft/abci/types"
+	"github.com/tachibtc/cometbft/libs/log"
 )
 
 func TestGRPC(t *testing.T) {

@@ -8,12 +8,12 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/cometbft/cometbft/libs/log"
-	"github.com/cometbft/cometbft/libs/service"
+	"github.com/tachibtc/cometbft/libs/log"
+	"github.com/tachibtc/cometbft/libs/service"
 
-	abcicli "github.com/cometbft/cometbft/abci/client"
-	abciserver "github.com/cometbft/cometbft/abci/server"
-	"github.com/cometbft/cometbft/abci/types"
+	abcicli "github.com/tachibtc/cometbft/abci/client"
+	abciserver "github.com/tachibtc/cometbft/abci/server"
+	"github.com/tachibtc/cometbft/abci/types"
 )
 
 const (
