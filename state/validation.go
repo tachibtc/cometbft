@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/cometbft/cometbft/crypto"
-	"github.com/cometbft/cometbft/types"
+	"github.com/tachibtc/cometbft/crypto"
+	"github.com/tachibtc/cometbft/types"
 )
 
 //-----------------------------------------------------

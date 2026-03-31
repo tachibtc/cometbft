@@ -7,9 +7,9 @@ import (
 	"net"
 	"time"
 
-	"github.com/cometbft/cometbft/libs/service"
-	"github.com/cometbft/cometbft/p2p"
-	"github.com/cometbft/cometbft/p2p/conn"
+	"github.com/tachibtc/cometbft/libs/service"
+	"github.com/tachibtc/cometbft/p2p"
+	"github.com/tachibtc/cometbft/p2p/conn"
 	"github.com/libp2p/go-libp2p/core/peer"
 	"github.com/libp2p/go-libp2p/p2p/net/swarm"
 )

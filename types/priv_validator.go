@@ -5,9 +5,9 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/cometbft/cometbft/crypto"
-	"github.com/cometbft/cometbft/crypto/ed25519"
-	cmtproto "github.com/cometbft/cometbft/proto/tendermint/types"
+	"github.com/tachibtc/cometbft/crypto"
+	"github.com/tachibtc/cometbft/crypto/ed25519"
+	cmtproto "github.com/tachibtc/cometbft/proto/tendermint/types"
 )
 
 // PrivValidator defines the functionality of a local CometBFT validator

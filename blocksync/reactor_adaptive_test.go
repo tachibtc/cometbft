@@ -8,13 +8,13 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	cfg "github.com/cometbft/cometbft/config"
-	"github.com/cometbft/cometbft/consensus"
-	"github.com/cometbft/cometbft/internal/test"
-	"github.com/cometbft/cometbft/libs/log"
-	"github.com/cometbft/cometbft/libs/sync"
-	"github.com/cometbft/cometbft/p2p"
-	"github.com/cometbft/cometbft/types"
+	cfg "github.com/tachibtc/cometbft/config"
+	"github.com/tachibtc/cometbft/consensus"
+	"github.com/tachibtc/cometbft/internal/test"
+	"github.com/tachibtc/cometbft/libs/log"
+	"github.com/tachibtc/cometbft/libs/sync"
+	"github.com/tachibtc/cometbft/p2p"
+	"github.com/tachibtc/cometbft/types"
 )
 
 func TestReactorAdaptive(t *testing.T) {

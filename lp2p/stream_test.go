@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/cometbft/cometbft/test/utils"
+	"github.com/tachibtc/cometbft/test/utils"
 	"github.com/libp2p/go-libp2p/core/network"
 	"github.com/libp2p/go-libp2p/core/protocol"
 	"github.com/stretchr/testify/require"

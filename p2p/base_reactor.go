@@ -1,8 +1,8 @@
 package p2p
 
 import (
-	"github.com/cometbft/cometbft/libs/service"
-	"github.com/cometbft/cometbft/p2p/conn"
+	"github.com/tachibtc/cometbft/libs/service"
+	"github.com/tachibtc/cometbft/p2p/conn"
 )
 
 // Reactor is responsible for handling incoming messages on one or more

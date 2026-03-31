@@ -8,10 +8,10 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	cryptomocks "github.com/cometbft/cometbft/crypto/mocks"
-	cmtmath "github.com/cometbft/cometbft/libs/math"
-	cmtproto "github.com/cometbft/cometbft/proto/tendermint/types"
-	cmttime "github.com/cometbft/cometbft/types/time"
+	cryptomocks "github.com/tachibtc/cometbft/crypto/mocks"
+	cmtmath "github.com/tachibtc/cometbft/libs/math"
+	cmtproto "github.com/tachibtc/cometbft/proto/tendermint/types"
+	cmttime "github.com/tachibtc/cometbft/types/time"
 )
 
 // Check VerifyCommit, VerifyCommitLight and VerifyCommitLightTrusting basic

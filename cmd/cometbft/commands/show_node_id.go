@@ -5,8 +5,8 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/cometbft/cometbft/lp2p"
-	"github.com/cometbft/cometbft/p2p"
+	"github.com/tachibtc/cometbft/lp2p"
+	"github.com/tachibtc/cometbft/p2p"
 )
 
 var showNodeIDAsLibP2P bool

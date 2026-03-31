@@ -11,15 +11,15 @@ import (
 	"github.com/cosmos/gogoproto/proto"
 	gogotypes "github.com/cosmos/gogoproto/types"
 
-	cmterrors "github.com/cometbft/cometbft/types/errors"
+	cmterrors "github.com/tachibtc/cometbft/types/errors"
 
 	dbm "github.com/cometbft/cometbft-db"
 
-	clist "github.com/cometbft/cometbft/libs/clist"
-	"github.com/cometbft/cometbft/libs/log"
-	cmtproto "github.com/cometbft/cometbft/proto/tendermint/types"
-	sm "github.com/cometbft/cometbft/state"
-	"github.com/cometbft/cometbft/types"
+	clist "github.com/tachibtc/cometbft/libs/clist"
+	"github.com/tachibtc/cometbft/libs/log"
+	cmtproto "github.com/tachibtc/cometbft/proto/tendermint/types"
+	sm "github.com/tachibtc/cometbft/state"
+	"github.com/tachibtc/cometbft/types"
 )
 
 const (

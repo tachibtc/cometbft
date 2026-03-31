@@ -5,8 +5,8 @@ import (
 	"strings"
 	"testing"
 
-	cmtflags "github.com/cometbft/cometbft/libs/cli/flags"
-	"github.com/cometbft/cometbft/libs/log"
+	cmtflags "github.com/tachibtc/cometbft/libs/cli/flags"
+	"github.com/tachibtc/cometbft/libs/log"
 )
 
 const (

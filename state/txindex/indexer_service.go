@@ -3,9 +3,9 @@ package txindex
 import (
 	"context"
 
-	"github.com/cometbft/cometbft/libs/service"
-	"github.com/cometbft/cometbft/state/indexer"
-	"github.com/cometbft/cometbft/types"
+	"github.com/tachibtc/cometbft/libs/service"
+	"github.com/tachibtc/cometbft/state/indexer"
+	"github.com/tachibtc/cometbft/types"
 )
 
 // XXX/TODO: These types should be moved to the indexer package.

@@ -7,9 +7,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/cometbft/cometbft/config"
-	cmcrypto "github.com/cometbft/cometbft/crypto"
-	"github.com/cometbft/cometbft/libs/log"
+	"github.com/tachibtc/cometbft/config"
+	cmcrypto "github.com/tachibtc/cometbft/crypto"
+	"github.com/tachibtc/cometbft/libs/log"
 	"github.com/libp2p/go-libp2p"
 	"github.com/libp2p/go-libp2p/core/connmgr"
 	"github.com/libp2p/go-libp2p/core/control"

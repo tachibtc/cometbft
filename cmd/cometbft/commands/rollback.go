@@ -8,10 +8,10 @@ import (
 
 	dbm "github.com/cometbft/cometbft-db"
 
-	cfg "github.com/cometbft/cometbft/config"
-	"github.com/cometbft/cometbft/libs/os"
-	"github.com/cometbft/cometbft/state"
-	"github.com/cometbft/cometbft/store"
+	cfg "github.com/tachibtc/cometbft/config"
+	"github.com/tachibtc/cometbft/libs/os"
+	"github.com/tachibtc/cometbft/state"
+	"github.com/tachibtc/cometbft/store"
 )
 
 var removeBlock = false

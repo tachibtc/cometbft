@@ -8,12 +8,12 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/cometbft/cometbft/crypto"
-	"github.com/cometbft/cometbft/crypto/tmhash"
-	cmtrand "github.com/cometbft/cometbft/libs/rand"
-	cmtproto "github.com/cometbft/cometbft/proto/tendermint/types"
-	cmtversion "github.com/cometbft/cometbft/proto/tendermint/version"
-	"github.com/cometbft/cometbft/version"
+	"github.com/tachibtc/cometbft/crypto"
+	"github.com/tachibtc/cometbft/crypto/tmhash"
+	cmtrand "github.com/tachibtc/cometbft/libs/rand"
+	cmtproto "github.com/tachibtc/cometbft/proto/tendermint/types"
+	cmtversion "github.com/tachibtc/cometbft/proto/tendermint/version"
+	"github.com/tachibtc/cometbft/version"
 )
 
 var defaultVoteTime = time.Date(2019, 1, 1, 0, 0, 0, 0, time.UTC)

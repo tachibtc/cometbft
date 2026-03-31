@@ -5,11 +5,11 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/cometbft/cometbft/crypto/bls12381"
-	"github.com/cometbft/cometbft/crypto/ed25519"
-	"github.com/cometbft/cometbft/crypto/secp256k1"
-	"github.com/cometbft/cometbft/crypto/tmhash"
-	cmtproto "github.com/cometbft/cometbft/proto/tendermint/types"
+	"github.com/tachibtc/cometbft/crypto/bls12381"
+	"github.com/tachibtc/cometbft/crypto/ed25519"
+	"github.com/tachibtc/cometbft/crypto/secp256k1"
+	"github.com/tachibtc/cometbft/crypto/tmhash"
+	cmtproto "github.com/tachibtc/cometbft/proto/tendermint/types"
 )
 
 const (

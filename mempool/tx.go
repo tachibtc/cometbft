@@ -1,7 +1,7 @@
 package mempool
 
 import (
-	"github.com/cometbft/cometbft/p2p"
+	"github.com/tachibtc/cometbft/p2p"
 )
 
 // TxInfo are parameters that get passed when attempting to add a tx to the

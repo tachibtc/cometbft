@@ -1,10 +1,10 @@
 package reactor
 
 import (
-	"github.com/cometbft/cometbft/abci/example/kvstore"
-	"github.com/cometbft/cometbft/config"
-	mempl "github.com/cometbft/cometbft/mempool"
-	"github.com/cometbft/cometbft/proxy"
+	"github.com/tachibtc/cometbft/abci/example/kvstore"
+	"github.com/tachibtc/cometbft/config"
+	mempl "github.com/tachibtc/cometbft/mempool"
+	"github.com/tachibtc/cometbft/proxy"
 )
 
 var mempool mempl.Mempool

@@ -5,13 +5,13 @@ import (
 
 	"github.com/spf13/cobra"
 
-	cfg "github.com/cometbft/cometbft/config"
-	cmtos "github.com/cometbft/cometbft/libs/os"
-	cmtrand "github.com/cometbft/cometbft/libs/rand"
-	"github.com/cometbft/cometbft/p2p"
-	"github.com/cometbft/cometbft/privval"
-	"github.com/cometbft/cometbft/types"
-	cmttime "github.com/cometbft/cometbft/types/time"
+	cfg "github.com/tachibtc/cometbft/config"
+	cmtos "github.com/tachibtc/cometbft/libs/os"
+	cmtrand "github.com/tachibtc/cometbft/libs/rand"
+	"github.com/tachibtc/cometbft/p2p"
+	"github.com/tachibtc/cometbft/privval"
+	"github.com/tachibtc/cometbft/types"
+	cmttime "github.com/tachibtc/cometbft/types/time"
 )
 
 // InitFilesCmd initializes a fresh CometBFT instance.

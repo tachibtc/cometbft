@@ -7,9 +7,9 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/cometbft/cometbft/libs/bytes"
-	"github.com/cometbft/cometbft/rpc/client/mock"
-	ctypes "github.com/cometbft/cometbft/rpc/core/types"
+	"github.com/tachibtc/cometbft/libs/bytes"
+	"github.com/tachibtc/cometbft/rpc/client/mock"
+	ctypes "github.com/tachibtc/cometbft/rpc/core/types"
 )
 
 func TestStatus(t *testing.T) {

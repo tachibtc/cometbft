@@ -5,8 +5,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/cometbft/cometbft/internal/autopool"
-	"github.com/cometbft/cometbft/p2p"
+	"github.com/tachibtc/cometbft/internal/autopool"
+	"github.com/tachibtc/cometbft/p2p"
 	"github.com/libp2p/go-libp2p/core/protocol"
 )
 

@@ -7,10 +7,10 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	cmtrand "github.com/cometbft/cometbft/libs/rand"
-	"github.com/cometbft/cometbft/libs/test"
+	cmtrand "github.com/tachibtc/cometbft/libs/rand"
+	"github.com/tachibtc/cometbft/libs/test"
 
-	"github.com/cometbft/cometbft/crypto/tmhash"
+	"github.com/tachibtc/cometbft/crypto/tmhash"
 )
 
 type testItem []byte

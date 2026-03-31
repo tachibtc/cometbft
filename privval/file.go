@@ -9,16 +9,16 @@ import (
 
 	"github.com/cosmos/gogoproto/proto"
 
-	"github.com/cometbft/cometbft/crypto"
-	"github.com/cometbft/cometbft/crypto/ed25519"
-	cmtbytes "github.com/cometbft/cometbft/libs/bytes"
-	cmtjson "github.com/cometbft/cometbft/libs/json"
-	cmtos "github.com/cometbft/cometbft/libs/os"
-	"github.com/cometbft/cometbft/libs/protoio"
-	"github.com/cometbft/cometbft/libs/tempfile"
-	cmtproto "github.com/cometbft/cometbft/proto/tendermint/types"
-	"github.com/cometbft/cometbft/types"
-	cmttime "github.com/cometbft/cometbft/types/time"
+	"github.com/tachibtc/cometbft/crypto"
+	"github.com/tachibtc/cometbft/crypto/ed25519"
+	cmtbytes "github.com/tachibtc/cometbft/libs/bytes"
+	cmtjson "github.com/tachibtc/cometbft/libs/json"
+	cmtos "github.com/tachibtc/cometbft/libs/os"
+	"github.com/tachibtc/cometbft/libs/protoio"
+	"github.com/tachibtc/cometbft/libs/tempfile"
+	cmtproto "github.com/tachibtc/cometbft/proto/tendermint/types"
+	"github.com/tachibtc/cometbft/types"
+	cmttime "github.com/tachibtc/cometbft/types/time"
 )
 
 // TODO: type ?

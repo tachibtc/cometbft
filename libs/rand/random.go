@@ -5,7 +5,7 @@ import (
 	mrand "math/rand"
 	"time"
 
-	cmtsync "github.com/cometbft/cometbft/libs/sync"
+	cmtsync "github.com/tachibtc/cometbft/libs/sync"
 )
 
 const (
@@ -301,7 +301,7 @@ func (r *Rand) Perm(n int) []int {
 
 // NOTE: This relies on the os's random number generator.
 // For real security, we should salt that with some seed.
-// See github.com/cometbft/cometbft/crypto for a more secure reader.
+// See github.com/tachibtc/cometbft/crypto for a more secure reader.
 func cRandBytes(numBytes int) []byte {
 	b := make([]byte, numBytes)
 	_, err := crand.Read(b)
