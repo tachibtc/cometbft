@@ -153,6 +153,16 @@ func StateProvider(stateProvider statesync.StateProvider) Option {
 	}
 }
 
+// [TACHI FORK] Package-level pre-created host for KDHT discovery before CometBFT starts.
+var preCreatedLibP2PHost *lp2p.Host
+
+// SetPreCreatedLibP2PHost sets a pre-created lp2p.Host that NewNode will use
+// instead of creating a new one. This allows running KDHT on the host before
+// CometBFT's consensus engine starts.
+func SetPreCreatedLibP2PHost(host *lp2p.Host) {
+	preCreatedLibP2PHost = host
+}
+
 // BootstrapState synchronizes the stores with the application after state sync
 // has been performed offline. It is expected that the block store and state
 // store are empty at the time the function is called.
@@ -563,9 +573,18 @@ func NewNodeWithContext(
 			reactors = reactors[1:]
 		}
 
-		host, err := lp2p.NewHost(config.P2P, nodeKey.PrivKey, p2pLogger)
-		if err != nil {
-			return nil, fmt.Errorf("unable to create libp2p host: %w", err)
+		// [TACHI FORK] Use pre-created host if available (for KDHT discovery before consensus)
+		var host *lp2p.Host
+		if preCreatedLibP2PHost != nil {
+			host = preCreatedLibP2PHost
+			preCreatedLibP2PHost = nil // consume it
+			logger.Info("Using pre-created libp2p host for KDHT discovery")
+		} else {
+			var err error
+			host, err = lp2p.NewHost(config.P2P, nodeKey.PrivKey, p2pLogger)
+			if err != nil {
+				return nil, fmt.Errorf("unable to create libp2p host: %w", err)
+			}
 		}
 
 		sw, err = lp2p.NewSwitch(nodeInfo, host, reactors, p2pMetrics, p2pLogger)
