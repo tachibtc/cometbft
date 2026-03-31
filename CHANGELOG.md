@@ -78,6 +78,12 @@
 
 ### FEATURES
 
+- `[lp2p]` feat(lp2p): support pre-created libp2p host injection and custom reactor
+  registration. Add `WrapHost`/`WrapHostWithConfig` for wrapping existing hosts,
+  implement `Switch.AddReactor` for runtime reactor registration, add synchronous
+  `Switch.Broadcast`, and export `Switch.Host()` for direct libp2p access (KDHT/rendezvous).
+  [TACHI FORK]
+
 - `[p2p]` feat(lp2p): implemented resource limiter ([\#5671](https://github.com/cometbft/cometbft/pull/5671))
 - `[p2p]` feat(consensus): add adaptive sync blocksync-to-consensus ingestion ([\#5633](https://github.com/cometbft/cometbft/pull/5633))
 - `[p2p]` feat(lp2p): implement Peer info methods (`NodeInfo`, `RemoteIP`, `RemoteAddr`, `IsOutbound`)

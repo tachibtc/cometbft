@@ -235,3 +235,42 @@ returned by the method.
 > - By the consensus protocol, in `broadcastNewRoundStepMessage`,
 >   `broadcastNewValidBlockMessage`, and `broadcastHasVoteMessage`
 > - By the state sync protocol
+
+## LibP2P Switch (TACHI FORK)
+
+The `lp2p.Switch` extends the base switch behavior for libp2p-based networking.
+
+### Pre-created host injection
+
+The `node.SetPreCreatedLibP2PHost` function allows passing a pre-created
+`lp2p.Host` to the node before calling `NewNodeWithContext`. This enables
+running KDHT peer discovery on the libp2p host before the consensus engine
+starts. If a pre-created host is set, `NewNodeWithContext` uses it instead
+of creating a new one, and clears the reference after consumption.
+
+Hosts can be wrapped using:
+- `lp2p.WrapHost(h)` — wraps a raw `host.Host` with default (empty) config.
+- `lp2p.WrapHostWithConfig(h, cfg, logger)` — wraps with bootstrap peers
+  parsed from config.
+
+### AddReactor (runtime registration)
+
+Unlike the legacy switch where all reactors are registered at initialization,
+the lp2p switch's `AddReactor` supports runtime registration of custom reactors
+(e.g., MuSig2). When called, it:
+
+1. Adds the reactor to the reactor set
+2. Registers libp2p stream handlers for all the reactor's channel descriptors
+3. Sets the switch reference on the reactor
+4. Starts the reactor immediately if the switch is already active
+
+### Host access
+
+`Switch.Host()` exposes the underlying `*lp2p.Host` for direct libp2p
+operations such as KDHT and rendezvous on the same host used by CometBFT.
+
+### Broadcast
+
+The lp2p switch implements `Broadcast(e Envelope) chan bool`, matching the
+semantics of the legacy switch's `Broadcast`: it fans out sends to all
+connected peers via goroutines and returns a channel of per-peer success results.
