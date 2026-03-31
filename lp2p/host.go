@@ -50,6 +50,33 @@ type BootstrapPeer struct {
 // @see https://docs.libp2p.io/concepts/transports/quic
 const TransportQUIC = "quic-v1"
 
+
+// WrapHost wraps an existing libp2p host.Host as a CometBFT lp2p.Host.
+// For Tachi Metaprotocol we need to pass a pre-created host (with KDHT running) to CometBFT.
+func WrapHost(h host.Host) *Host {
+	return &Host{
+		Host:           h,
+		bootstrapPeers: make(map[peer.ID]BootstrapPeer),
+	}
+}
+
+// WrapHostWithConfig wraps a host and parses bootstrap peers from config for tachi metaprotocol
+func WrapHostWithConfig(h host.Host, cfg config.LibP2PConfig, logger log.Logger) (*Host, error) {
+	peers, err := BootstrapPeersFromConfig(cfg)
+	if err != nil {
+		return nil, err
+	}
+	if logger == nil {
+		logger = log.NewNopLogger()
+	}
+	return &Host{
+		Host:           h,
+		config:         cfg,
+		bootstrapPeers: peers,
+		logger:         logger,
+	}, nil
+}
+
 // NewHost Host constructor.
 func NewHost(config *config.P2PConfig, nodeKey cmcrypto.PrivKey, logger log.Logger) (*Host, error) {
 	if !config.LibP2PEnabled() {

@@ -86,6 +86,12 @@ func NewSwitch(
 	return s, nil
 }
 
+// Host returns the underlying lp2p Host for direct libp2p access (e.g., KDHT).
+// For Tachi Metaprotocol this needs to be exported to allow KDHT and rendezvous on the same libp2p host.
+func (s *Switch) Host() *Host {
+	return s.host
+}
+
 //--------------------------------
 // BaseService methods
 //--------------------------------
