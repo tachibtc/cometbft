@@ -202,16 +202,31 @@ func (p *Peer) send(e p2p.Envelope) (err error) {
 	return StreamWriteClose(s, payload)
 }
 
+// streamOpenGraceWindow caps the time openStreamWithRetry spends retrying
+// "protocols not supported" errors. The error has two possible causes:
+//
+//  1. Transient startup race — the remote established a libp2p connection
+//     but hasn't yet registered this channel's stream handler via
+//     SetStreamHandler (called inside Switch.OnStart). Clears within a few
+//     hundred milliseconds once OnStart runs and identify propagates.
+//
+//  2. Permanent mismatch — the remote was built without support for this
+//     channel, or dropped the protocol entirely. Will never clear.
+//
+// The libp2p error text is identical for both cases. 500ms is long enough
+// to paper over realistic case-1 races, short enough that case 2 doesn't
+// stall every Send/TrySend call for the caller's full TimeoutStream budget.
+const streamOpenGraceWindow = 500 * time.Millisecond
+
 // openStreamWithRetry opens a libp2p stream for the given protocol, retrying
-// on "protocols not supported" errors. That error occurs during a startup
-// race where the remote hasn't yet registered its per-channel stream handler
-// via SetStreamHandler (called inside Switch.OnStart). Upstream CometBFT's
-// MConnection transport avoids this race because all channels share a single
-// multiplexed TCP stream — the race is unique to the libp2p per-channel
-// model used here. Retries are bounded by the caller's context
-// (TimeoutStream = 10s); any other error returns immediately.
+// briefly on "protocols not supported" errors. See streamOpenGraceWindow for
+// the rationale behind the cap. Upstream CometBFT's MConnection transport
+// avoids this race entirely because all channels share a single multiplexed
+// TCP stream — the race is unique to the libp2p per-channel model used here.
+// Any non-matching error returns immediately; retries end at the sooner of
+// the grace window, the caller's context deadline, or a successful open.
 func (p *Peer) openStreamWithRetry(ctx context.Context, protocolID protocol.ID) (network.Stream, error) {
-	const maxBackoff = time.Second
+	deadline := time.Now().Add(streamOpenGraceWindow)
 	backoff := 50 * time.Millisecond
 	for {
 		s, err := p.host.NewStream(ctx, p.addrInfo.ID, protocolID)
@@ -221,12 +236,16 @@ func (p *Peer) openStreamWithRetry(ctx context.Context, protocolID protocol.ID) 
 		if !strings.Contains(err.Error(), "protocols not supported") {
 			return nil, err
 		}
+		if time.Now().After(deadline) {
+			// Grace window elapsed — treat as permanent mismatch and fail fast.
+			return nil, err
+		}
 		select {
 		case <-ctx.Done():
 			return nil, fmt.Errorf("%w (last: %v)", ctx.Err(), err)
 		case <-time.After(backoff):
 		}
-		if backoff < maxBackoff {
+		if backoff < streamOpenGraceWindow {
 			backoff *= 2
 		}
 	}
