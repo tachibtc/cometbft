@@ -236,14 +236,22 @@ func (p *Peer) openStreamWithRetry(ctx context.Context, protocolID protocol.ID) 
 		if !strings.Contains(err.Error(), "protocols not supported") {
 			return nil, err
 		}
-		if time.Now().After(deadline) {
+		// Clamp the sleep so total time spent here never exceeds the grace
+		// window — an unclamped sleep could overshoot the cap by up to one
+		// backoff interval when only a thin slice of the window remains.
+		remaining := time.Until(deadline)
+		if remaining <= 0 {
 			// Grace window elapsed — treat as permanent mismatch and fail fast.
 			return nil, err
+		}
+		sleep := backoff
+		if sleep > remaining {
+			sleep = remaining
 		}
 		select {
 		case <-ctx.Done():
 			return nil, fmt.Errorf("%w (last: %v)", ctx.Err(), err)
-		case <-time.After(backoff):
+		case <-time.After(sleep):
 		}
 		if backoff < streamOpenGraceWindow {
 			backoff *= 2
