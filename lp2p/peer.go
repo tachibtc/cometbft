@@ -5,12 +5,15 @@ import (
 	"errors"
 	"fmt"
 	"net"
+	"strings"
 	"time"
 
 	"github.com/tachibtc/cometbft/libs/service"
 	"github.com/tachibtc/cometbft/p2p"
 	"github.com/tachibtc/cometbft/p2p/conn"
+	"github.com/libp2p/go-libp2p/core/network"
 	"github.com/libp2p/go-libp2p/core/peer"
+	"github.com/libp2p/go-libp2p/core/protocol"
 	"github.com/libp2p/go-libp2p/p2p/net/swarm"
 )
 
@@ -191,13 +194,42 @@ func (p *Peer) send(e p2p.Envelope) (err error) {
 		)
 	}()
 
-	// if no streams are available, it will block or return an error
-	s, err := p.host.NewStream(ctx, peerID, protocolID)
+	s, err := p.openStreamWithRetry(ctx, protocolID)
 	if err != nil {
 		return fmt.Errorf("failed to open stream %s: %w", protocolID, err)
 	}
 
 	return StreamWriteClose(s, payload)
+}
+
+// openStreamWithRetry opens a libp2p stream for the given protocol, retrying
+// on "protocols not supported" errors. That error occurs during a startup
+// race where the remote hasn't yet registered its per-channel stream handler
+// via SetStreamHandler (called inside Switch.OnStart). Upstream CometBFT's
+// MConnection transport avoids this race because all channels share a single
+// multiplexed TCP stream — the race is unique to the libp2p per-channel
+// model used here. Retries are bounded by the caller's context
+// (TimeoutStream = 10s); any other error returns immediately.
+func (p *Peer) openStreamWithRetry(ctx context.Context, protocolID protocol.ID) (network.Stream, error) {
+	const maxBackoff = time.Second
+	backoff := 50 * time.Millisecond
+	for {
+		s, err := p.host.NewStream(ctx, p.addrInfo.ID, protocolID)
+		if err == nil {
+			return s, nil
+		}
+		if !strings.Contains(err.Error(), "protocols not supported") {
+			return nil, err
+		}
+		select {
+		case <-ctx.Done():
+			return nil, fmt.Errorf("%w (last: %v)", ctx.Err(), err)
+		case <-time.After(backoff):
+		}
+		if backoff < maxBackoff {
+			backoff *= 2
+		}
+	}
 }
 
 func (p *Peer) handleSendErr(err error) {
