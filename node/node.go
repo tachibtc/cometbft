@@ -153,7 +153,9 @@ func StateProvider(stateProvider statesync.StateProvider) Option {
 	}
 }
 
-// For Tachi Metaprotocol Package-level pre-created host for KDHT discovery before CometBFT starts.
+// preCreatedLibP2PHost is a package-level pre-created libp2p host used by the
+// Tachi metaprotocol to run KDHT discovery before CometBFT's consensus engine
+// starts. Set via SetPreCreatedLibP2PHost; consumed once by NewNodeWithContext.
 var preCreatedLibP2PHost *lp2p.Host
 
 // SetPreCreatedLibP2PHost sets a pre-created lp2p.Host that NewNode will use
@@ -556,7 +558,9 @@ func NewNodeWithContext(
 		sw = switcher
 	} else {
 		p2pLogger.Info("Using go-libp2p transport!")
-		p2pLogger.Warn("EXPERIMENTAL: go-libp2p transport is enabled. Only enable this setting if it can be activated simultaneously for all validators on the network and peer IDs have been predetermined and exchanged.")
+		if state.LastBlockHeight != 0 {
+			p2pLogger.Warn("EXPERIMENTAL: go-libp2p transport is enabled. Only enable this setting if it can be activated simultaneously for all validators on the network and peer IDs have been predetermined and exchanged.")
+		}
 
 		reactors := []lp2p.SwitchReactor{
 			{Name: "MEMPOOL", Reactor: mempoolReactor},
