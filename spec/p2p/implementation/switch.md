@@ -257,9 +257,3 @@ Hosts can be wrapped using:
 
 `Switch.Host()` exposes the underlying `*lp2p.Host` for direct libp2p
 operations such as KDHT and rendezvous on the same host used by CometBFT.
-
-### Broadcast
-
-The lp2p switch implements `Broadcast(e Envelope) chan bool`, matching the
-semantics of the legacy switch's `Broadcast`: it fans out sends to all
-connected peers via goroutines and returns a channel of per-peer success results.
