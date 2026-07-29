@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/cometbft/cometbft/crypto/ed25519"
-	"github.com/cometbft/cometbft/libs/log"
-	"github.com/cometbft/cometbft/lp2p"
+	"github.com/tachibtc/cometbft/crypto/ed25519"
+	"github.com/tachibtc/cometbft/libs/log"
+	"github.com/tachibtc/cometbft/lp2p"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

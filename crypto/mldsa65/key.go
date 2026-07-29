@@ -16,9 +16,9 @@ import (
 
 	"github.com/cloudflare/circl/sign/mldsa/mldsa65"
 
-	"github.com/cometbft/cometbft/crypto"
-	"github.com/cometbft/cometbft/crypto/tmhash"
-	cmtjson "github.com/cometbft/cometbft/libs/json"
+	"github.com/tachibtc/cometbft/crypto"
+	"github.com/tachibtc/cometbft/crypto/tmhash"
+	cmtjson "github.com/tachibtc/cometbft/libs/json"
 )
 
 var (

@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/cometbft/cometbft/internal/protowire"
+	"github.com/tachibtc/cometbft/internal/protowire"
 )
 
 // Field numbers we care about. Both happen to be 1: the Message oneof's only

@@ -5,11 +5,11 @@ import (
 	"fmt"
 	"sync/atomic"
 
-	"github.com/cometbft/cometbft/config"
-	"github.com/cometbft/cometbft/internal/protowire"
-	"github.com/cometbft/cometbft/p2p"
-	protomem "github.com/cometbft/cometbft/proto/tendermint/mempool"
-	"github.com/cometbft/cometbft/types"
+	"github.com/tachibtc/cometbft/config"
+	"github.com/tachibtc/cometbft/internal/protowire"
+	"github.com/tachibtc/cometbft/p2p"
+	protomem "github.com/tachibtc/cometbft/proto/tendermint/mempool"
+	"github.com/tachibtc/cometbft/types"
 	"github.com/pkg/errors"
 )
 

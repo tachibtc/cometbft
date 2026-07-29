@@ -6,8 +6,8 @@ import (
 	"slices"
 	"sync"
 
-	"github.com/cometbft/cometbft/libs/log"
-	"github.com/cometbft/cometbft/types"
+	"github.com/tachibtc/cometbft/libs/log"
+	"github.com/tachibtc/cometbft/types"
 )
 
 // AppMempool is a mock for app-side mempool

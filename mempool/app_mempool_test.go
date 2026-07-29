@@ -7,10 +7,10 @@ import (
 	"testing"
 	"time"
 
-	abcimock "github.com/cometbft/cometbft/abci/client/mocks"
-	abci "github.com/cometbft/cometbft/abci/types"
-	"github.com/cometbft/cometbft/config"
-	"github.com/cometbft/cometbft/types"
+	abcimock "github.com/tachibtc/cometbft/abci/client/mocks"
+	abci "github.com/tachibtc/cometbft/abci/types"
+	"github.com/tachibtc/cometbft/config"
+	"github.com/tachibtc/cometbft/types"
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
 )

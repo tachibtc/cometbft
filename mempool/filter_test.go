@@ -6,8 +6,8 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
-	"github.com/cometbft/cometbft/config"
-	protomem "github.com/cometbft/cometbft/proto/tendermint/mempool"
+	"github.com/tachibtc/cometbft/config"
+	protomem "github.com/tachibtc/cometbft/proto/tendermint/mempool"
 )
 
 // marshalTxsMsg builds the wire bytes for a wrapped tendermint.mempool.Message

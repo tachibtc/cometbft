@@ -6,7 +6,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/cometbft/cometbft/crypto/mldsa65"
+	"github.com/tachibtc/cometbft/crypto/mldsa65"
 )
 
 func TestSignAndVerify(t *testing.T) {
