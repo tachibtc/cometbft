@@ -252,9 +252,9 @@
 
 ### FEATURES For Tachi Metaprotocol
 
-- `[lp2p]` feat(lp2p): support pre-created libp2p host injection
-    Add `WrapHost`/`WrapHostWithConfig` for wrapping existing hosts,
-  `Switch.Broadcast`, and export `Switch.Host()` for direct libp2p access (KDHT/rendezvous).
+- `[lp2p]` feat(lp2p): support pre-created libp2p host injection.
+  Add `WrapHost`/`WrapHostWithConfig` for wrapping existing hosts,
+  and export `Switch.Host()` for direct libp2p access (KDHT/rendezvous).
 
 
 - `[p2p]` feat(lp2p): implemented resource limiter ([\#5671](https://github.com/cometbft/cometbft/pull/5671))

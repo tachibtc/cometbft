@@ -155,7 +155,9 @@ func StateProvider(stateProvider statesync.StateProvider) Option {
 	}
 }
 
-// For Tachi Metaprotocol Package-level pre-created host for KDHT discovery before CometBFT starts.
+// preCreatedLibP2PHost is a package-level pre-created libp2p host used by the
+// Tachi metaprotocol to run KDHT discovery before CometBFT's consensus engine
+// starts. Set via SetPreCreatedLibP2PHost; consumed once by NewNodeWithContext.
 var preCreatedLibP2PHost *lp2p.Host
 
 // SetPreCreatedLibP2PHost sets a pre-created lp2p.Host that NewNode will use
