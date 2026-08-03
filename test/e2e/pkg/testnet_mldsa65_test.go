@@ -6,10 +6,10 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/cometbft/cometbft/crypto/encoding"
-	"github.com/cometbft/cometbft/crypto/mldsa65"
-	e2e "github.com/cometbft/cometbft/test/e2e/pkg"
-	"github.com/cometbft/cometbft/types"
+	"github.com/tachibtc/cometbft/crypto/encoding"
+	"github.com/tachibtc/cometbft/crypto/mldsa65"
+	e2e "github.com/tachibtc/cometbft/test/e2e/pkg"
+	"github.com/tachibtc/cometbft/types"
 )
 
 // TestMlDsa65Network spins up the in-memory representation of an end-to-end

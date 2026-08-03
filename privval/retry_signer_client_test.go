@@ -6,9 +6,9 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/cometbft/cometbft/crypto/ed25519"
-	"github.com/cometbft/cometbft/libs/log"
-	cmtproto "github.com/cometbft/cometbft/proto/tendermint/types"
+	"github.com/tachibtc/cometbft/crypto/ed25519"
+	"github.com/tachibtc/cometbft/libs/log"
+	cmtproto "github.com/tachibtc/cometbft/proto/tendermint/types"
 )
 
 // TestRetrySignerClientCloseAborts checks Close aborts an in-flight retry loop

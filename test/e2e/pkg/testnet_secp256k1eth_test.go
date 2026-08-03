@@ -6,10 +6,10 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/cometbft/cometbft/crypto/encoding"
-	"github.com/cometbft/cometbft/crypto/secp256k1eth"
-	e2e "github.com/cometbft/cometbft/test/e2e/pkg"
-	"github.com/cometbft/cometbft/types"
+	"github.com/tachibtc/cometbft/crypto/encoding"
+	"github.com/tachibtc/cometbft/crypto/secp256k1eth"
+	e2e "github.com/tachibtc/cometbft/test/e2e/pkg"
+	"github.com/tachibtc/cometbft/types"
 )
 
 // TestSecp256k1EthNetwork builds the in-memory representation of an e2e testnet

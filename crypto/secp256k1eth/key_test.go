@@ -11,9 +11,9 @@ import (
 	"github.com/stretchr/testify/require"
 	"golang.org/x/crypto/sha3"
 
-	cmtjson "github.com/cometbft/cometbft/libs/json"
+	cmtjson "github.com/tachibtc/cometbft/libs/json"
 
-	"github.com/cometbft/cometbft/crypto/secp256k1eth"
+	"github.com/tachibtc/cometbft/crypto/secp256k1eth"
 )
 
 func TestGenAndDeterministicGen(t *testing.T) {

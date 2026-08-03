@@ -3,7 +3,7 @@ package blocksync
 import (
 	"time"
 
-	"github.com/cometbft/cometbft/internal/movavg"
+	"github.com/tachibtc/cometbft/internal/movavg"
 )
 
 // SyncTracker determines when to escape blocksync and switch to consensus,

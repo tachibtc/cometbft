@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"testing"
 
-	ce "github.com/cometbft/cometbft/crypto/encoding"
-	cmtproto "github.com/cometbft/cometbft/proto/tendermint/types"
+	ce "github.com/tachibtc/cometbft/crypto/encoding"
+	cmtproto "github.com/tachibtc/cometbft/proto/tendermint/types"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
