@@ -3,6 +3,7 @@ package types
 import (
 	"github.com/tachibtc/cometbft/crypto/bls12381"
 	"github.com/tachibtc/cometbft/crypto/ed25519"
+	"github.com/tachibtc/cometbft/crypto/mldsa65"
 	cmtmath "github.com/tachibtc/cometbft/libs/math"
 )
 
@@ -10,8 +11,8 @@ import (
 // and Vote.
 // XXX: secp256k1 does not have max signature size defined.
 var MaxSignatureSize = cmtmath.MaxInt(
-	ed25519.SignatureSize,
-	bls12381.SignatureLength,
+	cmtmath.MaxInt(ed25519.SignatureSize, bls12381.SignatureLength),
+	mldsa65.SignatureSize,
 )
 
 // Signable is an interface for all signable things.

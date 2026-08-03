@@ -71,6 +71,8 @@ func runInTransaction(db *sql.DB, query func(*sql.Tx) error) error {
 
 func runBulkInsert(db *sql.DB, tableName string, columns []string, inserts [][]any) error {
 	return runInTransaction(db, func(tx *sql.Tx) error {
+		// TODO: replace pq.CopyIn with explicit COPY ... FROM STDIN (pq.CopyIn is deprecated in lib/pq).
+		//nolint:staticcheck // SA1019
 		stmt, err := tx.Prepare(pq.CopyIn(tableName, columns...))
 		if err != nil {
 			return fmt.Errorf("preparing bulk insert statement: %w", err)
@@ -144,7 +146,6 @@ func (es *EventSink) IndexBlockEvents(h types.EventDataNewBlockEvents) error {
 	// Add the block to the blocks table and report back its row ID for use
 	// in indexing the events for the block.
 	var blockID int64
-	//nolint:execinquery
 	err := es.store.QueryRow(`
 INSERT INTO `+tableBlocks+` (height, chain_id, created_at)
   VALUES ($1, $2, $3)
