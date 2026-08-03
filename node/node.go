@@ -581,6 +581,21 @@ func NewNodeWithContext(
 		// For Tachi Metaprotocol we need to use pre-created host if available (for KDHT discovery before consensus)
 		var host *lp2p.Host
 		if preCreatedLibP2PHost != nil {
+			// The caller is responsible for constructing the pre-created host from
+			// this node's key, but nothing enforces that at compile time. Verify it
+			// here so a mismatched host can't silently desync our network identity
+			// (libp2p peer ID) from our consensus identity (node key).
+			expectedID, err := lp2p.IDFromPrivateKey(nodeKey.PrivKey)
+			if err != nil {
+				return nil, fmt.Errorf("unable to derive libp2p peer ID from node key: %w", err)
+			}
+			if preCreatedLibP2PHost.ID() != expectedID {
+				return nil, fmt.Errorf(
+					"pre-created libp2p host identity %s does not match node key's peer ID %s",
+					preCreatedLibP2PHost.ID(), expectedID,
+				)
+			}
+
 			host = preCreatedLibP2PHost
 			preCreatedLibP2PHost = nil // consume it
 			logger.Info("Using pre-created libp2p host for KDHT discovery")

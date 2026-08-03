@@ -5,6 +5,8 @@ deps:
 breaking:
   use:
     - FILE
+  except:
+    - FILE_SAME_GO_PACKAGE
 lint:
   use:
     - BASIC
