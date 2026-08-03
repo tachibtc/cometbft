@@ -6,11 +6,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/tachibtc/cometbft/crypto/ed25519"
-	"github.com/tachibtc/cometbft/lp2p"
 	"github.com/libp2p/go-libp2p/core/peer"
 	libp2pnoise "github.com/libp2p/go-libp2p/p2p/security/noise"
 	"github.com/stretchr/testify/require"
+	"github.com/tachibtc/cometbft/crypto/ed25519"
+	"github.com/tachibtc/cometbft/lp2p"
 )
 
 func dialNoise(t *testing.T, addr string, clientKey ed25519.PrivKey, serverPeer peer.ID) (net.Conn, error) {

@@ -9,7 +9,7 @@ import "tendermint/types/types.proto";
 import "tendermint/types/validator.proto";
 import "tendermint/version/types.proto";
 
-option go_package = "github.com/cometbft/cometbft/proto/tendermint/state";
+option go_package = "github.com/tachibtc/cometbft/proto/tendermint/state";
 
 // LegacyABCIResponses retains the responses
 // of the legacy ABCI calls during block processing.

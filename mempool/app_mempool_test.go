@@ -7,12 +7,12 @@ import (
 	"testing"
 	"time"
 
+	"github.com/stretchr/testify/mock"
+	"github.com/stretchr/testify/require"
 	abcimock "github.com/tachibtc/cometbft/abci/client/mocks"
 	abci "github.com/tachibtc/cometbft/abci/types"
 	"github.com/tachibtc/cometbft/config"
 	"github.com/tachibtc/cometbft/types"
-	"github.com/stretchr/testify/mock"
-	"github.com/stretchr/testify/require"
 )
 
 func TestAppMempool(t *testing.T) {

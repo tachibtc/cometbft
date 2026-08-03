@@ -7,11 +7,11 @@ import (
 	"strconv"
 	"strings"
 
-	cmcrypto "github.com/tachibtc/cometbft/crypto"
-	"github.com/tachibtc/cometbft/p2p"
 	"github.com/libp2p/go-libp2p/core/peer"
 	ma "github.com/multiformats/go-multiaddr"
 	manet "github.com/multiformats/go-multiaddr/net"
+	cmcrypto "github.com/tachibtc/cometbft/crypto"
+	"github.com/tachibtc/cometbft/p2p"
 )
 
 const (

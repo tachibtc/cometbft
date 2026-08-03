@@ -5,13 +5,13 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/pkg/errors"
 	client "github.com/tachibtc/cometbft/abci/client"
 	abci "github.com/tachibtc/cometbft/abci/types"
 	"github.com/tachibtc/cometbft/config"
 	"github.com/tachibtc/cometbft/internal/guard"
 	"github.com/tachibtc/cometbft/libs/log"
 	"github.com/tachibtc/cometbft/types"
-	"github.com/pkg/errors"
 )
 
 // AppMempool represents a mempool that's implemented completely on the app-side via ABCI methods in opposite to

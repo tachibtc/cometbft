@@ -5,12 +5,12 @@ import (
 	"fmt"
 	"sync/atomic"
 
+	"github.com/pkg/errors"
 	"github.com/tachibtc/cometbft/config"
 	"github.com/tachibtc/cometbft/internal/protowire"
 	"github.com/tachibtc/cometbft/p2p"
 	protomem "github.com/tachibtc/cometbft/proto/tendermint/mempool"
 	"github.com/tachibtc/cometbft/types"
-	"github.com/pkg/errors"
 )
 
 var _ p2p.MsgBytesFilter = (*AppReactor)(nil)

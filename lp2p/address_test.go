@@ -6,13 +6,13 @@ import (
 	"testing"
 	"time"
 
+	"github.com/libp2p/go-libp2p/core/peer"
+	ma "github.com/multiformats/go-multiaddr"
+	"github.com/stretchr/testify/require"
 	"github.com/tachibtc/cometbft/config"
 	"github.com/tachibtc/cometbft/crypto/ed25519"
 	"github.com/tachibtc/cometbft/libs/log"
 	"github.com/tachibtc/cometbft/test/utils"
-	"github.com/libp2p/go-libp2p/core/peer"
-	ma "github.com/multiformats/go-multiaddr"
-	"github.com/stretchr/testify/require"
 )
 
 func TestAddressToMultiAddr(t *testing.T) {

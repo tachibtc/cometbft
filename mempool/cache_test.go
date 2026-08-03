@@ -6,11 +6,11 @@ import (
 	"fmt"
 	"testing"
 
+	"github.com/stretchr/testify/require"
 	"github.com/tachibtc/cometbft/abci/example/kvstore"
 	abci "github.com/tachibtc/cometbft/abci/types"
 	"github.com/tachibtc/cometbft/proxy"
 	"github.com/tachibtc/cometbft/types"
-	"github.com/stretchr/testify/require"
 )
 
 func TestCacheRemove(t *testing.T) {

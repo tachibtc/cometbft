@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/pkg/errors"
 	cstypes "github.com/tachibtc/cometbft/consensus/types"
 	"github.com/tachibtc/cometbft/state"
 	types "github.com/tachibtc/cometbft/types"
 	cmttime "github.com/tachibtc/cometbft/types/time"
-	"github.com/pkg/errors"
 )
 
 // IngestCandidate is a block that *might* be ingested into the consensus state. Not thread safe.

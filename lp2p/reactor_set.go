@@ -5,9 +5,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/libp2p/go-libp2p/core/protocol"
 	"github.com/tachibtc/cometbft/internal/autopool"
 	"github.com/tachibtc/cometbft/p2p"
-	"github.com/libp2p/go-libp2p/core/protocol"
 )
 
 // reactorSet manages multiple reactors as a single entrypoint for Switch.

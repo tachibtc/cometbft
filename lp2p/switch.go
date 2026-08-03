@@ -9,15 +9,15 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/tachibtc/cometbft/libs/log"
-	"github.com/tachibtc/cometbft/libs/service"
-	"github.com/tachibtc/cometbft/p2p"
 	"github.com/libp2p/go-libp2p/core/network"
 	"github.com/libp2p/go-libp2p/core/peer"
 	"github.com/libp2p/go-libp2p/core/peerstore"
 	"github.com/libp2p/go-libp2p/core/protocol"
 	ma "github.com/multiformats/go-multiaddr"
 	"github.com/pkg/errors"
+	"github.com/tachibtc/cometbft/libs/log"
+	"github.com/tachibtc/cometbft/libs/service"
+	"github.com/tachibtc/cometbft/p2p"
 )
 
 // Switch represents p2p.Switcher alternative implementation based on go-libp2p.

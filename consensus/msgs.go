@@ -3,8 +3,8 @@ package consensus
 import (
 	"fmt"
 
-	cmterrors "github.com/tachibtc/cometbft/types/errors"
 	"github.com/cosmos/gogoproto/proto"
+	cmterrors "github.com/tachibtc/cometbft/types/errors"
 
 	cstypes "github.com/tachibtc/cometbft/consensus/types"
 	"github.com/tachibtc/cometbft/libs/bits"

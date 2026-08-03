@@ -3,7 +3,7 @@ package tendermint.crypto;
 
 import "gogoproto/gogo.proto";
 
-option go_package = "github.com/cometbft/cometbft/proto/tendermint/crypto";
+option go_package = "github.com/tachibtc/cometbft/proto/tendermint/crypto";
 
 // PublicKey defines the keys available for use with Validators
 message PublicKey {

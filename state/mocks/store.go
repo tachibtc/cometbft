@@ -3,8 +3,8 @@
 package mocks
 
 import (
-	abcitypes "github.com/tachibtc/cometbft/abci/types"
 	mock "github.com/stretchr/testify/mock"
+	abcitypes "github.com/tachibtc/cometbft/abci/types"
 
 	state "github.com/tachibtc/cometbft/state"
 

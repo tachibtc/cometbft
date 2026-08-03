@@ -3,7 +3,7 @@ package tendermint.rpc.grpc;
 
 import "tendermint/abci/types.proto";
 
-option go_package = "github.com/cometbft/cometbft/rpc/grpc;coregrpc";
+option go_package = "github.com/tachibtc/cometbft/rpc/grpc;coregrpc";
 
 //----------------------------------------
 // Request types

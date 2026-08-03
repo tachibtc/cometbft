@@ -7,12 +7,12 @@ import (
 	"sync"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/tachibtc/cometbft/libs/log"
 	rpchttp "github.com/tachibtc/cometbft/rpc/client/http"
 	e2e "github.com/tachibtc/cometbft/test/e2e/pkg"
 	"github.com/tachibtc/cometbft/test/loadtime/payload"
 	"github.com/tachibtc/cometbft/types"
-	"github.com/google/uuid"
 )
 
 const workerPoolSize = 16

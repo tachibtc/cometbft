@@ -8,12 +8,12 @@ import (
 	"strings"
 	"time"
 
-	"github.com/tachibtc/cometbft/crypto"
-	"github.com/tachibtc/cometbft/libs/log"
-	"github.com/tachibtc/cometbft/lp2p"
 	"github.com/libp2p/go-libp2p/core/peer"
 	"github.com/libp2p/go-libp2p/core/sec"
 	libp2pnoise "github.com/libp2p/go-libp2p/p2p/security/noise"
+	"github.com/tachibtc/cometbft/crypto"
+	"github.com/tachibtc/cometbft/libs/log"
+	"github.com/tachibtc/cometbft/lp2p"
 )
 
 const noiseScheme = "noise://"

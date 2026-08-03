@@ -3,8 +3,8 @@
 package mocks
 
 import (
-	state "github.com/tachibtc/cometbft/state"
 	mock "github.com/stretchr/testify/mock"
+	state "github.com/tachibtc/cometbft/state"
 
 	types "github.com/tachibtc/cometbft/types"
 )

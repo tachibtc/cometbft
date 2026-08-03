@@ -3,7 +3,7 @@ package tendermint.blocksync;
 
 import "gogoproto/gogo.proto";
 
-option go_package = "github.com/cometbft/cometbft/proto/tendermint/blocksync";
+option go_package = "github.com/tachibtc/cometbft/proto/tendermint/blocksync";
 
 // SigCountMessage is a stripped down view of Message used by the blocksync
 // MsgBytesFilter for validation before unmarshalling the full BlockResponse

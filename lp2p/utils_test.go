@@ -3,11 +3,11 @@ package lp2p
 import (
 	"testing"
 
+	"github.com/cosmos/gogoproto/proto"
+	"github.com/stretchr/testify/require"
 	"github.com/tachibtc/cometbft/abci/types"
 	"github.com/tachibtc/cometbft/crypto/ed25519"
 	"github.com/tachibtc/cometbft/crypto/secp256k1"
-	"github.com/cosmos/gogoproto/proto"
-	"github.com/stretchr/testify/require"
 )
 
 func TestNewPreMarshalledMessage(t *testing.T) {

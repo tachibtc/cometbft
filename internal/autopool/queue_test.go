@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/tachibtc/cometbft/test/utils"
 	"github.com/stretchr/testify/require"
+	"github.com/tachibtc/cometbft/test/utils"
 )
 
 func TestQueue(t *testing.T) {

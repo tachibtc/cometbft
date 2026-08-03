@@ -5,11 +5,11 @@ import (
 	"fmt"
 	"testing"
 
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 	"github.com/tachibtc/cometbft/crypto/ed25519"
 	"github.com/tachibtc/cometbft/libs/log"
 	"github.com/tachibtc/cometbft/lp2p"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
 )
 
 func TestIsConnTimeoutForNonTimeoutErrors(t *testing.T) {

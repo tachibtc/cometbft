@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"strconv"
 
-	cmterrors "github.com/tachibtc/cometbft/types/errors"
 	"github.com/cosmos/gogoproto/proto"
 	lru "github.com/hashicorp/golang-lru/v2"
+	cmterrors "github.com/tachibtc/cometbft/types/errors"
 
 	dbm "github.com/cometbft/cometbft-db"
 

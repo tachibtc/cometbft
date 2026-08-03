@@ -5,15 +5,15 @@ import (
 	"testing"
 	"time"
 
+	"github.com/libp2p/go-libp2p/core/protocol"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 	"github.com/tachibtc/cometbft/config"
 	"github.com/tachibtc/cometbft/libs/log"
 	"github.com/tachibtc/cometbft/p2p"
 	"github.com/tachibtc/cometbft/p2p/conn"
 	tmp2p "github.com/tachibtc/cometbft/proto/tendermint/p2p"
 	"github.com/tachibtc/cometbft/test/utils"
-	"github.com/libp2p/go-libp2p/core/protocol"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
 )
 
 func TestReactorSet(t *testing.T) {

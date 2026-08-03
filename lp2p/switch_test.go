@@ -11,6 +11,11 @@ import (
 	"testing"
 	"time"
 
+	"github.com/libp2p/go-libp2p/core/network"
+	"github.com/libp2p/go-libp2p/core/peer"
+	"github.com/libp2p/go-libp2p/p2p/protocol/identify"
+	ma "github.com/multiformats/go-multiaddr"
+	"github.com/stretchr/testify/require"
 	"github.com/tachibtc/cometbft/abci/types"
 	"github.com/tachibtc/cometbft/config"
 	"github.com/tachibtc/cometbft/crypto/ed25519"
@@ -19,11 +24,6 @@ import (
 	"github.com/tachibtc/cometbft/p2p/conn"
 	p2pmock "github.com/tachibtc/cometbft/p2p/mock"
 	"github.com/tachibtc/cometbft/test/utils"
-	"github.com/libp2p/go-libp2p/core/network"
-	"github.com/libp2p/go-libp2p/core/peer"
-	"github.com/libp2p/go-libp2p/p2p/protocol/identify"
-	ma "github.com/multiformats/go-multiaddr"
-	"github.com/stretchr/testify/require"
 )
 
 func TestSwitch(t *testing.T) {

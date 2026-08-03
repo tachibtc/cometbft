@@ -6,11 +6,11 @@ import (
 	"net"
 	"strings"
 
+	"github.com/libp2p/go-libp2p/core/peer"
 	"github.com/tachibtc/cometbft/crypto"
 	"github.com/tachibtc/cometbft/crypto/ed25519"
 	"github.com/tachibtc/cometbft/libs/log"
 	cmtnet "github.com/tachibtc/cometbft/libs/net"
-	"github.com/libp2p/go-libp2p/core/peer"
 )
 
 // IsConnTimeout returns a boolean indicating whether the error is known to

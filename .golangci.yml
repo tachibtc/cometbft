@@ -25,6 +25,7 @@ linters:
           allow:
             - $gostd
             - github.com/cometbft
+            - github.com/tachibtc
             - github.com/cosmos
             - github.com/btcsuite/btcd/btcec/v2
             - github.com/BurntSushi/toml
@@ -69,6 +70,7 @@ linters:
             - $gostd
             - github.com/cosmos
             - github.com/cometbft
+            - github.com/tachibtc
             - github.com/adlio/schema
             - github.com/btcsuite/btcd
             - github.com/fortytw2/leaktest

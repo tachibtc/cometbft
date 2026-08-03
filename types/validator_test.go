@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"testing"
 
-	ce "github.com/tachibtc/cometbft/crypto/encoding"
-	cmtproto "github.com/tachibtc/cometbft/proto/tendermint/types"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	ce "github.com/tachibtc/cometbft/crypto/encoding"
+	cmtproto "github.com/tachibtc/cometbft/proto/tendermint/types"
 )
 
 func TestValidatorProtoBuf(t *testing.T) {

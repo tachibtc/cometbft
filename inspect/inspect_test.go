@@ -10,6 +10,9 @@ import (
 	"testing"
 	"time"
 
+	"github.com/fortytw2/leaktest"
+	"github.com/stretchr/testify/mock"
+	"github.com/stretchr/testify/require"
 	abcitypes "github.com/tachibtc/cometbft/abci/types"
 	"github.com/tachibtc/cometbft/config"
 	"github.com/tachibtc/cometbft/inspect"
@@ -20,9 +23,6 @@ import (
 	statemocks "github.com/tachibtc/cometbft/state/mocks"
 	txindexmocks "github.com/tachibtc/cometbft/state/txindex/mocks"
 	"github.com/tachibtc/cometbft/types"
-	"github.com/fortytw2/leaktest"
-	"github.com/stretchr/testify/mock"
-	"github.com/stretchr/testify/require"
 )
 
 func startInspector(t *testing.T, d *inspect.Inspector, listenAddr string) (stop func()) {

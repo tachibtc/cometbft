@@ -8,13 +8,13 @@ import (
 	"strings"
 	"time"
 
-	"github.com/tachibtc/cometbft/libs/service"
-	"github.com/tachibtc/cometbft/p2p"
-	"github.com/tachibtc/cometbft/p2p/conn"
 	"github.com/libp2p/go-libp2p/core/network"
 	"github.com/libp2p/go-libp2p/core/peer"
 	"github.com/libp2p/go-libp2p/core/protocol"
 	"github.com/libp2p/go-libp2p/p2p/net/swarm"
+	"github.com/tachibtc/cometbft/libs/service"
+	"github.com/tachibtc/cometbft/p2p"
+	"github.com/tachibtc/cometbft/p2p/conn"
 )
 
 // Peer represents a remote node connected via libp2p.

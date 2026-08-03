@@ -5,7 +5,7 @@ import "gogoproto/gogo.proto";
 import "tendermint/types/evidence.proto";
 import "tendermint/types/types.proto";
 
-option go_package = "github.com/cometbft/cometbft/proto/tendermint/types";
+option go_package = "github.com/tachibtc/cometbft/proto/tendermint/types";
 
 message Block {
   Header header = 1 [(gogoproto.nullable) = false];

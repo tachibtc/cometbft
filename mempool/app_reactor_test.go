@@ -6,6 +6,8 @@ import (
 	"testing"
 	"time"
 
+	"github.com/stretchr/testify/mock"
+	"github.com/stretchr/testify/require"
 	abcimock "github.com/tachibtc/cometbft/abci/client/mocks"
 	abci "github.com/tachibtc/cometbft/abci/types"
 	"github.com/tachibtc/cometbft/config"
@@ -15,8 +17,6 @@ import (
 	"github.com/tachibtc/cometbft/p2p"
 	protomem "github.com/tachibtc/cometbft/proto/tendermint/mempool"
 	"github.com/tachibtc/cometbft/types"
-	"github.com/stretchr/testify/mock"
-	"github.com/stretchr/testify/require"
 )
 
 func TestAppReactor(t *testing.T) {

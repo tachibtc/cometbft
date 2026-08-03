@@ -1,8 +1,8 @@
 package blocksync
 
 import (
-	"github.com/tachibtc/cometbft/types"
 	"github.com/go-kit/kit/metrics"
+	"github.com/tachibtc/cometbft/types"
 )
 
 const (
