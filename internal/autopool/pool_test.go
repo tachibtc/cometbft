@@ -8,9 +8,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/tachibtc/cometbft/libs/log"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"github.com/tachibtc/cometbft/libs/log"
 )
 
 func TestPool(t *testing.T) {

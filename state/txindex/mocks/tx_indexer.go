@@ -5,8 +5,8 @@ package mocks
 import (
 	context "context"
 
-	log "github.com/tachibtc/cometbft/libs/log"
 	mock "github.com/stretchr/testify/mock"
+	log "github.com/tachibtc/cometbft/libs/log"
 
 	query "github.com/tachibtc/cometbft/libs/pubsub/query"
 

@@ -4,6 +4,7 @@ import (
 	"os"
 	"testing"
 
+	"github.com/stretchr/testify/require"
 	cfg "github.com/tachibtc/cometbft/config"
 	"github.com/tachibtc/cometbft/crypto/tmhash"
 	"github.com/tachibtc/cometbft/internal/test"
@@ -11,7 +12,6 @@ import (
 	cmtproto "github.com/tachibtc/cometbft/proto/tendermint/types"
 	"github.com/tachibtc/cometbft/types"
 	cmttime "github.com/tachibtc/cometbft/types/time"
-	"github.com/stretchr/testify/require"
 )
 
 var config *cfg.Config // NOTE: must be reset for each _test.go file

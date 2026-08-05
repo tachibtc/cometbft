@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/pkg/errors"
 	cstypes "github.com/tachibtc/cometbft/consensus/types"
 	"github.com/tachibtc/cometbft/state"
 	types "github.com/tachibtc/cometbft/types"
 	cmttime "github.com/tachibtc/cometbft/types/time"
-	"github.com/pkg/errors"
 )
 
 // IngestCandidate is a block that *might* be ingested into the consensus state. Not thread safe.
@@ -152,14 +152,9 @@ func (ic *IngestCandidate) Verify(state state.State) error {
 
 	// verify commit extensions
 	if ic.extensionsEnabled() {
-		if err = ic.extCommit.EnsureExtensions(true); err != nil {
-			return fmt.Errorf("ensure extensions: %w", err)
-		}
-
 		// if extensions are enabled, we must fully verify the commit since it
-		// is not validated within ValidateBlock but it will be written to the
-		// store.
-		err = state.Validators.VerifyCommit(chainID, blockID, height, ic.extCommit.ToCommit())
+		// is not validated within ValidateBlock but it will be written to the store.
+		err = state.Validators.VerifyCommitExtended(chainID, blockID, height, ic.extCommit)
 		if err != nil {
 			return fmt.Errorf("verify extended commit: %w", err)
 		}

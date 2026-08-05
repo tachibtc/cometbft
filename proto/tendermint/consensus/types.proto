@@ -5,7 +5,7 @@ import "gogoproto/gogo.proto";
 import "tendermint/libs/bits/types.proto";
 import "tendermint/types/types.proto";
 
-option go_package = "github.com/cometbft/cometbft/proto/tendermint/consensus";
+option go_package = "github.com/tachibtc/cometbft/proto/tendermint/consensus";
 
 // NewRoundStep is sent for every step taken in the ConsensusState.
 // For every height/round/step transition

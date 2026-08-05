@@ -11,8 +11,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/tachibtc/cometbft/abci/types"
 	"github.com/stretchr/testify/require"
+	"github.com/tachibtc/cometbft/abci/types"
 )
 
 const EnvP2PBench = "P2P_BENCH_TEST"

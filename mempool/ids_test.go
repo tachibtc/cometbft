@@ -4,8 +4,8 @@ import (
 	"net"
 	"testing"
 
-	"github.com/tachibtc/cometbft/p2p/mock"
 	"github.com/stretchr/testify/assert"
+	"github.com/tachibtc/cometbft/p2p/mock"
 )
 
 func TestMempoolIDsBasic(t *testing.T) {

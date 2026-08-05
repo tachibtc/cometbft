@@ -3,7 +3,7 @@ package tendermint.p2p;
 
 import "gogoproto/gogo.proto";
 
-option go_package = "github.com/cometbft/cometbft/proto/tendermint/p2p";
+option go_package = "github.com/tachibtc/cometbft/proto/tendermint/p2p";
 
 message NetAddress {
   string id = 1 [(gogoproto.customname) = "ID"];

@@ -5,10 +5,10 @@ import (
 	"testing"
 	"time"
 
+	"github.com/stretchr/testify/require"
 	cmtproto "github.com/tachibtc/cometbft/proto/tendermint/types"
 	cmtversion "github.com/tachibtc/cometbft/proto/tendermint/version"
 	"github.com/tachibtc/cometbft/version"
-	"github.com/stretchr/testify/require"
 )
 
 func MakeExtCommit(blockID BlockID, height int64, round int32,

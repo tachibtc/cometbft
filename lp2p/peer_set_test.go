@@ -4,11 +4,11 @@ import (
 	"context"
 	"testing"
 
-	"github.com/tachibtc/cometbft/libs/log"
-	"github.com/tachibtc/cometbft/p2p"
 	"github.com/libp2p/go-libp2p/core/peer"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"github.com/tachibtc/cometbft/libs/log"
+	"github.com/tachibtc/cometbft/p2p"
 )
 
 func TestPeerSet(t *testing.T) {

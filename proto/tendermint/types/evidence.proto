@@ -6,7 +6,7 @@ import "google/protobuf/timestamp.proto";
 import "tendermint/types/types.proto";
 import "tendermint/types/validator.proto";
 
-option go_package = "github.com/cometbft/cometbft/proto/tendermint/types";
+option go_package = "github.com/tachibtc/cometbft/proto/tendermint/types";
 
 message Evidence {
   oneof sum {

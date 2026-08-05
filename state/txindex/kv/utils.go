@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"math/big"
 
+	"github.com/google/orderedcode"
 	idxutil "github.com/tachibtc/cometbft/internal/indexer"
 	cmtsyntax "github.com/tachibtc/cometbft/libs/pubsub/query/syntax"
 	"github.com/tachibtc/cometbft/state/indexer"
 	"github.com/tachibtc/cometbft/types"
-	"github.com/google/orderedcode"
 )
 
 type HeightInfo struct {

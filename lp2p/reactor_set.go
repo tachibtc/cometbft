@@ -5,9 +5,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/libp2p/go-libp2p/core/protocol"
 	"github.com/tachibtc/cometbft/internal/autopool"
 	"github.com/tachibtc/cometbft/p2p"
-	"github.com/libp2p/go-libp2p/core/protocol"
 )
 
 // reactorSet manages multiple reactors as a single entrypoint for Switch.
@@ -250,12 +250,20 @@ func (rs *reactorSet) receiveQueued(reactorID int, e pendingEnvelope) {
 
 	now := time.Now()
 
+	defer rs.recoverReceive(reactor.name)
 	reactor.Receive(e.Envelope)
 
 	timeTaken := time.Since(now)
 
 	rs.switchRef.metrics.MessagesReactorInFlight.With(labels...).Add(-1)
 	rs.switchRef.metrics.MessageReactorReceiveDuration.With(labels...).Observe(timeTaken.Seconds())
+}
+
+func (rs *reactorSet) recoverReceive(reactorName string) {
+	if p := recover(); p != nil {
+		err := fmt.Errorf("panic: %+v", p)
+		rs.switchRef.Logger.Error("Panic during receive", "reactor", reactorName, "err", err)
+	}
 }
 
 // newReactorPriorityQueue creates a consumer pool for reactor.Receive()

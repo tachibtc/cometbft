@@ -7,7 +7,7 @@ import "google/protobuf/timestamp.proto";
 import "tendermint/consensus/types.proto";
 import "tendermint/types/events.proto";
 
-option go_package = "github.com/cometbft/cometbft/proto/tendermint/consensus";
+option go_package = "github.com/tachibtc/cometbft/proto/tendermint/consensus";
 
 // MsgInfo are msgs from the reactor which may update the state
 message MsgInfo {

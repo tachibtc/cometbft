@@ -3,7 +3,7 @@ package tendermint.crypto;
 
 import "gogoproto/gogo.proto";
 
-option go_package = "github.com/cometbft/cometbft/proto/tendermint/crypto";
+option go_package = "github.com/tachibtc/cometbft/proto/tendermint/crypto";
 
 message Proof {
   int64 total = 1;

@@ -4,15 +4,15 @@ import (
 	"fmt"
 	"reflect"
 
-	cmcrypto "github.com/tachibtc/cometbft/crypto"
-	"github.com/tachibtc/cometbft/crypto/ed25519"
-	"github.com/tachibtc/cometbft/crypto/secp256k1"
-	"github.com/tachibtc/cometbft/p2p"
 	"github.com/cosmos/gogoproto/proto"
 	"github.com/libp2p/go-libp2p"
 	"github.com/libp2p/go-libp2p/core/crypto"
 	ma "github.com/multiformats/go-multiaddr"
 	"github.com/pkg/errors"
+	cmcrypto "github.com/tachibtc/cometbft/crypto"
+	"github.com/tachibtc/cometbft/crypto/ed25519"
+	"github.com/tachibtc/cometbft/crypto/secp256k1"
+	"github.com/tachibtc/cometbft/p2p"
 )
 
 // PrivateKeyFromCosmosKey converts a Cosmos private key to a libp2p private key.

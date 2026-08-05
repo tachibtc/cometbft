@@ -25,9 +25,11 @@ linters:
           allow:
             - $gostd
             - github.com/cometbft
+            - github.com/tachibtc
             - github.com/cosmos
             - github.com/btcsuite/btcd/btcec/v2
             - github.com/BurntSushi/toml
+            - github.com/cloudflare/circl/sign/mldsa/mldsa65
             - github.com/go-git/go-git/v5
             - github.com/go-kit
             - github.com/go-logfmt/logfmt
@@ -60,6 +62,7 @@ linters:
             - github.com/libp2p/go-libp2p
             - github.com/multiformats/go-multiaddr
             - github.com/mr-tron/base58/base58
+            - github.com/miekg/pkcs11
         test:
           files:
             - $test
@@ -67,6 +70,7 @@ linters:
             - $gostd
             - github.com/cosmos
             - github.com/cometbft
+            - github.com/tachibtc
             - github.com/adlio/schema
             - github.com/btcsuite/btcd
             - github.com/fortytw2/leaktest
@@ -91,6 +95,7 @@ linters:
             - github.com/libp2p/go-libp2p
             - github.com/multiformats/go-multiaddr
             - github.com/mr-tron/base58/base58
+            - github.com/miekg/pkcs11
     dogsled:
       max-blank-identifiers: 3
     gosec:
@@ -156,6 +161,9 @@ linters:
         path: _test\.go
       - linters:
           - goconst
+        path: (.+)_test\.go
+      - linters:
+          - dupl
         path: (.+)_test\.go
       - linters:
           - govet

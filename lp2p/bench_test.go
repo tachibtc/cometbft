@@ -11,6 +11,7 @@ import (
 	"testing"
 	"time"
 
+	"github.com/stretchr/testify/require"
 	"github.com/tachibtc/cometbft/abci/types"
 	"github.com/tachibtc/cometbft/config"
 	"github.com/tachibtc/cometbft/crypto/ed25519"
@@ -19,7 +20,6 @@ import (
 	"github.com/tachibtc/cometbft/p2p/conn"
 	"github.com/tachibtc/cometbft/test/utils"
 	"github.com/tachibtc/cometbft/version"
-	"github.com/stretchr/testify/require"
 )
 
 type perfBench struct {

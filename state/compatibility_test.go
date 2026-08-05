@@ -10,9 +10,9 @@ import (
 	cmtproto "github.com/tachibtc/cometbft/proto/tendermint/types"
 	sm "github.com/tachibtc/cometbft/state"
 
+	"github.com/stretchr/testify/require"
 	abci "github.com/tachibtc/cometbft/abci/types"
 	cmtstate "github.com/tachibtc/cometbft/proto/tendermint/state"
-	"github.com/stretchr/testify/require"
 )
 
 // Compatibility test across different state proto versions

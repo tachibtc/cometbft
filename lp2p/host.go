@@ -7,9 +7,6 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/tachibtc/cometbft/config"
-	cmcrypto "github.com/tachibtc/cometbft/crypto"
-	"github.com/tachibtc/cometbft/libs/log"
 	"github.com/libp2p/go-libp2p"
 	"github.com/libp2p/go-libp2p/core/connmgr"
 	"github.com/libp2p/go-libp2p/core/control"
@@ -20,6 +17,9 @@ import (
 	"github.com/libp2p/go-libp2p/p2p/protocol/ping"
 	quic "github.com/libp2p/go-libp2p/p2p/transport/quic"
 	multiaddr "github.com/multiformats/go-multiaddr"
+	"github.com/tachibtc/cometbft/config"
+	cmcrypto "github.com/tachibtc/cometbft/crypto"
+	"github.com/tachibtc/cometbft/libs/log"
 )
 
 // Host is a wrapper around the libp2p host.
@@ -49,7 +49,6 @@ type BootstrapPeer struct {
 // TransportQUIC quic transport.
 // @see https://docs.libp2p.io/concepts/transports/quic
 const TransportQUIC = "quic-v1"
-
 
 // WrapHost wraps an existing libp2p host.Host as a CometBFT lp2p.Host.
 // For Tachi Metaprotocol we need to pass a pre-created host (with KDHT running) to CometBFT.

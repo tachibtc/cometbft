@@ -4,7 +4,10 @@ import (
 	"errors"
 	"fmt"
 	"net"
+	"strings"
 
+	"github.com/libp2p/go-libp2p/core/peer"
+	"github.com/tachibtc/cometbft/crypto"
 	"github.com/tachibtc/cometbft/crypto/ed25519"
 	"github.com/tachibtc/cometbft/libs/log"
 	cmtnet "github.com/tachibtc/cometbft/libs/net"
@@ -50,6 +53,31 @@ func NewSignerListener(listenAddr string, logger log.Logger) (*SignerListenerEnd
 	pve := NewSignerListenerEndpoint(logger.With("module", "privval"), listener)
 
 	return pve, nil
+}
+
+// NewSignerListenerFromAddr builds a SignerListenerEndpoint from a listen
+// address, dispatching on scheme: tcp:// and unix:// behave exactly as
+// NewSignerListener; noise://<signer-peer-id>@host:port secures the listener
+// with libp2p Noise using nodeKey as identity and allowlists the given signer
+// peer. nodeKey is only used by the noise scheme.
+func NewSignerListenerFromAddr(listenAddr string, nodeKey crypto.PrivKey, logger log.Logger) (*SignerListenerEndpoint, error) {
+	if strings.HasPrefix(listenAddr, noiseScheme) {
+		signerPeer, hostport, err := ParseNoiseAddr(listenAddr)
+		if err != nil {
+			return nil, err
+		}
+		ln, err := net.Listen("tcp", hostport)
+		if err != nil {
+			return nil, err
+		}
+		nl, err := NewNoiseListener(ln, nodeKey, []peer.ID{signerPeer}, NoiseListenerLogger(logger.With("module", "privval")))
+		if err != nil {
+			_ = ln.Close()
+			return nil, err
+		}
+		return NewSignerListenerEndpoint(logger.With("module", "privval"), nl), nil
+	}
+	return NewSignerListener(listenAddr, logger)
 }
 
 // GetFreeLocalhostAddrPort returns a free localhost:port address
