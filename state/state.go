@@ -278,10 +278,29 @@ func MedianTime(commit *types.Commit, validators *types.ValidatorSet) (time.Time
 	weightedTimes := make([]*cmttime.WeightedTime, len(commit.Signatures))
 	totalVotingPower := int64(0)
 
+	// TACHI: block 752623's embedded LastCommit (commit.Height == 752622) was
+	// produced live during a rolling validator-set upgrade that introduced
+	// upstream PR #5901 ("median time no longer considers nil precommits",
+	// commit b471ffbe7). Some validators computed this block's time under the
+	// old rule (only BlockIDFlagAbsent excluded; Nil votes still counted)
+	// before the rollout completed, and that value is now permanently
+	// on-chain. Replaying it with the new rule (Nil also excluded) computes a
+	// different median and fails validation, permanently blocking any node
+	// that needs to resync through this height. This exception reproduces
+	// the old rule for that one already-committed historical height only;
+	// every other height uses the current (correct, post-#5901) rule.
+	const tachiLegacyMedianTimeHeight = 752622
+
 	for i, commitSig := range commit.Signatures {
-		// Only commit votes justify the block (see VerifyCommit); Nil/Absent
-		// votes must not contribute to the time.
-		if commitSig.BlockIDFlag != types.BlockIDFlagCommit {
+		var skip bool
+		if commit.Height == tachiLegacyMedianTimeHeight {
+			skip = commitSig.BlockIDFlag == types.BlockIDFlagAbsent
+		} else {
+			// Only commit votes justify the block (see VerifyCommit); Nil/Absent
+			// votes must not contribute to the time.
+			skip = commitSig.BlockIDFlag != types.BlockIDFlagCommit
+		}
+		if skip {
 			continue
 		}
 		_, validator := validators.GetByAddress(commitSig.ValidatorAddress)
