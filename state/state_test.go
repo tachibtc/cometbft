@@ -1239,4 +1239,94 @@ func TestMedianTime(t *testing.T) {
 		require.NoError(t, err)
 		require.Equal(t, now, medianTime)
 	})
+
+	t.Run("legacy height 752622 includes nil precommits", func(t *testing.T) {
+		now := time.Now()
+		// Height 752622's LastCommit is a real, already-committed historical
+		// block produced before upstream PR #5901 ("median time no longer
+		// considers nil precommits") had rolled out network-wide. At that
+		// height, Nil votes must still count toward the median to match what
+		// was actually recorded on-chain. See
+		// docs/incidents/2026-09-22-regtest-bootstrap-consensus-panic.md.
+		commit := &types.Commit{
+			Height: 752622,
+			Signatures: []types.CommitSig{
+				{
+					BlockIDFlag:      types.BlockIDFlagCommit,
+					ValidatorAddress: val1.Address,
+					Timestamp:        now,
+				},
+				{
+					BlockIDFlag:      types.BlockIDFlagCommit,
+					ValidatorAddress: val2.Address,
+					Timestamp:        now.Add(1 * time.Minute),
+				},
+				{
+					BlockIDFlag:      types.BlockIDFlagNil,
+					ValidatorAddress: val3.Address,
+					Timestamp:        now.Add(100 * time.Minute),
+				},
+			},
+		}
+
+		medianTime, err := sm.MedianTime(commit, vals)
+		require.NoError(t, err)
+		require.Equal(t, now.Add(1*time.Minute), medianTime)
+	})
+
+	t.Run("legacy height 752622 still excludes absent precommits", func(t *testing.T) {
+		now := time.Now()
+		commit := &types.Commit{
+			Height: 752622,
+			Signatures: []types.CommitSig{
+				{
+					BlockIDFlag:      types.BlockIDFlagCommit,
+					ValidatorAddress: val1.Address,
+					Timestamp:        now,
+				},
+				{
+					BlockIDFlag:      types.BlockIDFlagAbsent,
+					ValidatorAddress: val2.Address,
+					Timestamp:        now.Add(100 * time.Minute),
+				},
+				{
+					BlockIDFlag:      types.BlockIDFlagCommit,
+					ValidatorAddress: val3.Address,
+					Timestamp:        now.Add(2 * time.Minute),
+				},
+			},
+		}
+
+		medianTime, err := sm.MedianTime(commit, vals)
+		require.NoError(t, err)
+		require.Equal(t, now, medianTime)
+	})
+
+	t.Run("heights other than 752622 still exclude nil precommits", func(t *testing.T) {
+		now := time.Now()
+		commit := &types.Commit{
+			Height: 752623,
+			Signatures: []types.CommitSig{
+				{
+					BlockIDFlag:      types.BlockIDFlagCommit,
+					ValidatorAddress: val1.Address,
+					Timestamp:        now,
+				},
+				{
+					BlockIDFlag:      types.BlockIDFlagCommit,
+					ValidatorAddress: val2.Address,
+					Timestamp:        now.Add(1 * time.Minute),
+				},
+				{
+					BlockIDFlag:      types.BlockIDFlagNil,
+					ValidatorAddress: val3.Address,
+					Timestamp:        now.Add(100 * time.Minute),
+				},
+			},
+		}
+
+		medianTime, err := sm.MedianTime(commit, vals)
+		require.NoError(t, err)
+		require.Equal(t, now, medianTime)
+	})
 }
