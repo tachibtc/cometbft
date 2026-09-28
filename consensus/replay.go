@@ -529,8 +529,15 @@ func (h *Handshaker) replayBlock(state sm.State, height int64, proxyApp proxy.Ap
 	blockExec := sm.NewBlockExecutor(h.stateStore, h.logger, proxyApp, emptyMempool{}, sm.EmptyEvidencePool{}, h.store)
 	blockExec.SetEventBus(h.eventBus)
 
+	// The block store only holds committed blocks, so the block is applied as
+	// a finalized block, with the commit the store saved for it.
+	commit := h.store.LoadSeenCommit(height)
+	if commit == nil {
+		commit = h.store.LoadBlockCommit(height)
+	}
+
 	var err error
-	state, err = blockExec.ApplyBlock(state, meta.BlockID, block)
+	state, err = blockExec.ApplyFinalizedBlock(state, meta.BlockID, block, commit)
 	if err != nil {
 		return sm.State{}, err
 	}

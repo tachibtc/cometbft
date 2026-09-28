@@ -1747,7 +1747,12 @@ func (cs *State) finalizeCommit(height int64) {
 		panic("cannot finalize commit; proposal block does not hash to commit hash")
 	}
 
-	if err := cs.blockExec.ValidateBlock(cs.state, block); err != nil {
+	// +2/3 have precommitted the block, so it is validated as a finalized
+	// block: a block time that differs from this binary's median-time rule
+	// must not crash the node. Proposals are still validated strictly before
+	// this node prevotes or precommits them.
+	commit := cs.Votes.Precommits(cs.CommitRound).MakeExtendedCommit(cs.state.ConsensusParams.ABCI).ToCommit()
+	if err := cs.blockExec.ValidateFinalizedBlock(cs.state, blockID, block, commit); err != nil {
 		panic(fmt.Errorf("+2/3 committed an invalid block: %w", err))
 	}
 

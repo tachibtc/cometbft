@@ -34,13 +34,20 @@ func PrometheusMetrics(namespace string, labelsAndValues ...string) *Metrics {
 			Name:      "validator_set_updates",
 			Help:      "ValidatorSetUpdates is the total number of times the application has updated the validator set since process start. metrics:Number of validator set updates returned by the application since process start.",
 		}, labels).With(labelsAndValues...),
+		FinalizedBlockTimeMismatches: prometheus.NewCounterFrom(stdprometheus.CounterOpts{
+			Namespace: namespace,
+			Subsystem: MetricsSubsystem,
+			Name:      "finalized_block_time_mismatches",
+			Help:      "FinalizedBlockTimeMismatches is the number of already-committed blocks accepted even though their time differs from the median time computed by this node, which means the median-time rule has changed since. metrics:Number of committed blocks accepted whose time differs from this node's median time.",
+		}, labels).With(labelsAndValues...),
 	}
 }
 
 func NopMetrics() *Metrics {
 	return &Metrics{
-		BlockProcessingTime:   discard.NewHistogram(),
-		ConsensusParamUpdates: discard.NewCounter(),
-		ValidatorSetUpdates:   discard.NewCounter(),
+		BlockProcessingTime:          discard.NewHistogram(),
+		ConsensusParamUpdates:        discard.NewCounter(),
+		ValidatorSetUpdates:          discard.NewCounter(),
+		FinalizedBlockTimeMismatches: discard.NewCounter(),
 	}
 }

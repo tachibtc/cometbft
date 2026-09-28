@@ -660,12 +660,16 @@ FOR_LOOP:
 			// For subsequent blocks, first.LastCommit was already fully verified
 			// in the previous iteration (as second.LastCommit), so we skip the
 			// redundant VerifyCommit() inside ValidateBlock.
-			blockValidator := r.blockExec.ValidateBlockSkipLastCommit
+			//
+			// second.LastCommit, verified above, finalizes first, so first is
+			// validated as a finalized block: a block time that differs from
+			// this binary's median-time rule does not halt block sync.
+			blockValidator := r.blockExec.ValidateFinalizedBlockSkipLastCommit
 			if blocksSynced == 0 {
-				blockValidator = r.blockExec.ValidateBlock
+				blockValidator = r.blockExec.ValidateFinalizedBlock
 			}
 
-			if err = blockValidator(state, first); err != nil {
+			if err = blockValidator(state, firstID, first, second.LastCommit); err != nil {
 				r.handleValidationFailure(first, second, err)
 				continue FOR_LOOP
 			}

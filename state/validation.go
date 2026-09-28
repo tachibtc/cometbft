@@ -16,6 +16,22 @@ import (
 type blockValidationOptions struct {
 	blockTimeTolerance         time.Duration
 	skipLastCommitVerification bool
+
+	// finalizedBy, when set, is a commit claimed to finalize this block. It
+	// is only consulted if the block's time differs from the median time of
+	// its LastCommit; see finalizedBlockTimeAccepted.
+	finalizedBy *finalizingCommit
+}
+
+// finalizingCommit is a commit for a block, together with the block's ID, used
+// to validate a block that the network has already finalized.
+type finalizingCommit struct {
+	blockID types.BlockID
+	commit  *types.Commit
+
+	// onMedianTimeMismatch is called when the block's time is accepted despite
+	// differing from the median time computed by this binary.
+	onMedianTimeMismatch func(expected, got time.Time)
 }
 
 func validateBlock(state State, block *types.Block, opts ...func(*blockValidationOptions)) error {
@@ -140,7 +156,7 @@ func validateBlock(state State, block *types.Block, opts ...func(*blockValidatio
 		if err != nil {
 			return fmt.Errorf("error validating block while calculating median time: %w", err)
 		}
-		if !block.Time.Equal(medianTime) {
+		if !block.Time.Equal(medianTime) && !finalizedBlockTimeAccepted(state, block, vopts.finalizedBy, medianTime) {
 			return fmt.Errorf("invalid block time. Expected %v, got %v",
 				medianTime,
 				block.Time,
@@ -167,4 +183,35 @@ func validateBlock(state State, block *types.Block, opts ...func(*blockValidatio
 	}
 
 	return nil
+}
+
+// finalizedBlockTimeAccepted reports whether a block whose time differs from
+// the median time of its LastCommit must still be accepted because +2/3 of the
+// validator set have already committed it.
+//
+// The median-time rule is enforced by validators when they vote on a proposal.
+// Once +2/3 have committed a block it is final: rejecting it later cannot undo
+// it, and only strands the node that rejects it. A mismatch on a committed
+// block means honest validators disagreed about the rule, such as when a
+// consensus-critical change to MedianTime rolled out while the block was being
+// committed. It gives no power to an adversary either: +2/3 of the voting power
+// sign their own vote timestamps and can place the median anywhere they like.
+//
+// The commit is verified here, only on a mismatch, so blocks that follow the
+// rule pay nothing extra and a mismatch is accepted only for the exact block
+// the commit finalizes.
+func finalizedBlockTimeAccepted(state State, block *types.Block, fc *finalizingCommit, medianTime time.Time) bool {
+	if fc == nil || fc.commit == nil {
+		return false
+	}
+	if !block.HashesTo(fc.blockID.Hash) {
+		return false
+	}
+	if err := state.Validators.VerifyCommit(state.ChainID, fc.blockID, block.Height, fc.commit); err != nil {
+		return false
+	}
+	if fc.onMedianTimeMismatch != nil {
+		fc.onMedianTimeMismatch(medianTime, block.Time)
+	}
+	return true
 }
