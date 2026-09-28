@@ -73,6 +73,7 @@ type reactorOpts struct {
 	allAbsentExtCommitBlock int64
 	invalidExtCommitBlock   int64
 	deterministicVoteTimes  bool
+	offMedianTimeBlock      int64
 }
 
 type reactorOption func(*reactorOpts)
@@ -98,6 +99,16 @@ func withInvalidExtCommitBlock(height int64) reactorOption {
 func withDeterministicVoteTimes() reactorOption {
 	return func(o *reactorOpts) {
 		o.deterministicVoteTimes = true
+	}
+}
+
+// withOffMedianTimeBlock makes the block at height (> 1) carry a time that
+// differs from the median time of its LastCommit, as if it had been committed
+// under a different median-time rule. Combine it with withDeterministicVoteTimes
+// so the next block's time is still greater than this one's.
+func withOffMedianTimeBlock(height int64) reactorOption {
+	return func(o *reactorOpts) {
+		o.offMedianTimeBlock = height
 	}
 }
 
@@ -171,6 +182,10 @@ func newReactor(
 
 		thisBlock, err := state.MakeBlock(blockHeight, nil, lastExtCommit.ToCommit(), nil, state.Validators.Proposer.Address)
 		require.NoError(t, err)
+		offMedianTime := blockHeight == options.offMedianTimeBlock
+		if offMedianTime {
+			thisBlock.Time = thisBlock.Time.Add(500 * time.Millisecond)
+		}
 
 		thisParts, err := thisBlock.MakePartSet(types.BlockPartSizeBytes)
 		require.NoError(t, err)
@@ -206,7 +221,13 @@ func newReactor(
 			ExtendedSignatures: extCommit,
 		}
 
-		state, err = blockExec.ApplyBlock(state, blockID, thisBlock)
+		if offMedianTime {
+			// This binary's median-time rule rejects the block, so apply it
+			// the way the network that committed it did.
+			state, err = blockExec.ApplyVerifiedBlock(state, blockID, thisBlock)
+		} else {
+			state, err = blockExec.ApplyBlock(state, blockID, thisBlock)
+		}
 		if err != nil {
 			panic(fmt.Errorf("error apply block: %w", err))
 		}

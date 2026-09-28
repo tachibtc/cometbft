@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/tachibtc/cometbft/consensus"
+	sm "github.com/tachibtc/cometbft/state"
 	"github.com/tachibtc/cometbft/types"
 )
 
@@ -107,13 +108,23 @@ func (r *Reactor) blockIngestorRoutine(blockIngestor BlockIngestor) {
 				return
 			}
 
+			// nextBlock.LastCommit, verified by ic.Verify, finalizes block, so
+			// block is validated as a finalized block: a block time that
+			// differs from this binary's median-time rule does not halt
+			// block sync.
+			blockID := types.BlockID{Hash: block.Hash(), PartSetHeader: blockParts.Header()}
+			commit := nextBlock.LastCommit
+			validateFinalized := func(s sm.State, b *types.Block) error {
+				return r.blockExec.ValidateFinalizedBlock(s, blockID, b, commit)
+			}
+
 			// create ingest candidate block...
 			ic, err := consensus.NewIngestCandidate(
 				block,
 				blockParts,
-				nextBlock.LastCommit,
+				commit,
 				extCommit,
-				r.blockExec.ValidateBlock,
+				validateFinalized,
 			)
 
 			if err != nil {
