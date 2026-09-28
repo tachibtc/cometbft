@@ -14,6 +14,24 @@ const (
 	// BlockProtocol versions all block data structures and processing.
 	// This includes validity of blocks and state updates.
 	BlockProtocol uint64 = 11
+
+	// ConsensusRules versions the rules validators apply to consensus data
+	// without it changing on the wire, such as how MedianTime computes a
+	// block's time. Two nodes on different rules can each consider the
+	// other's proposals invalid, so a network whose validators straddle a
+	// rules change can split with neither side reaching +2/3, and halt.
+	//
+	// Bump it with every such change. libp2p protocol IDs include it (see
+	// lp2p.ProtocolID), so nodes on different rules never exchange consensus
+	// messages: a partial rollout shows up as disconnected peers instead of
+	// a silent halt. Roll a bump out to all validators at once, at an agreed
+	// halt height.
+	//
+	// Version 1 is the rules of every node built before this constant
+	// existed, including upstream #5901's MedianTime (Nil precommits
+	// excluded); its protocol IDs carry no rules segment, so it stays
+	// compatible with them.
+	ConsensusRules uint64 = 1
 )
 
 // TMGitCommitHash uses git rev-parse HEAD to find commit hash which is helpful
