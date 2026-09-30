@@ -242,7 +242,7 @@ func (p *Peer) openStreamWithRetry(ctx context.Context, protocolID protocol.ID) 
 		remaining := time.Until(deadline)
 		if remaining <= 0 {
 			// Grace window elapsed — treat as permanent mismatch and fail fast.
-			return nil, err
+			return nil, p.explainProtocolMismatch(err)
 		}
 		sleep := backoff
 		if sleep > remaining {
@@ -257,6 +257,23 @@ func (p *Peer) openStreamWithRetry(ctx context.Context, protocolID protocol.ID) 
 			backoff *= 2
 		}
 	}
+}
+
+// explainProtocolMismatch wraps a permanent "protocols not supported" error
+// with ErrConsensusRulesMismatch if the peer advertises CometBFT channels
+// under different consensus rules (see version.ConsensusRules).
+func (p *Peer) explainProtocolMismatch(err error) error {
+	protocols, perr := p.host.Peerstore().GetProtocols(p.addrInfo.ID)
+	if perr != nil {
+		return err
+	}
+	for _, id := range protocols {
+		if rules, ok := consensusRulesOf(id); ok && rules != consensusRules {
+			return fmt.Errorf("%w: peer runs consensus rules v%d, this node v%d: %v",
+				ErrConsensusRulesMismatch, rules, consensusRules, err)
+		}
+	}
+	return err
 }
 
 func (p *Peer) handleSendErr(err error) {

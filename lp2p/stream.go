@@ -5,12 +5,15 @@ import (
 	"encoding/binary"
 	"fmt"
 	"io"
+	"strconv"
 	"strings"
 	"time"
 
 	"github.com/libp2p/go-libp2p/core/network"
 	"github.com/libp2p/go-libp2p/core/protocol"
 	"github.com/pkg/errors"
+
+	"github.com/tachibtc/cometbft/version"
 )
 
 // ProtocolIDPrefix is the prefix for all protocol IDs.
@@ -23,12 +26,53 @@ const TimeoutStream = 10 * time.Second
 // Protocols should configure their own maximum size.
 const MaxStreamSize = 4 * (1 << 20)
 
+// consensusRules is the consensus rules version in this node's protocol IDs.
+// Tests simulate a node on other rules through protocolIDForRules.
+const consensusRules = version.ConsensusRules
+
+// ErrConsensusRulesMismatch reports a peer running different consensus rules
+// (see version.ConsensusRules), which this node cannot exchange messages with.
+var ErrConsensusRulesMismatch = errors.New("consensus rules version mismatch")
+
 // ProtocolID returns the protocol ID for a given channel
 // Byte is used for compatibility with the original CometBFT implementation.
+//
+// It includes this node's consensus rules version, so nodes on different
+// rules cannot open streams to each other. Every reactor channel is gated
+// this way, not just consensus: see version.ConsensusRules.
 func ProtocolID(channelID byte) protocol.ID {
-	return protocol.ID(
-		fmt.Sprintf("%s/channel/0x%02x", ProtocolIDPrefix, channelID),
-	)
+	return protocolIDForRules(channelID, consensusRules)
+}
+
+// protocolIDForRules returns the protocol ID for a channel under the given
+// consensus rules version. Version 1 has no rules segment, matching nodes
+// built before the version existed.
+func protocolIDForRules(channelID byte, rules uint64) protocol.ID {
+	if rules <= 1 {
+		return protocol.ID(fmt.Sprintf("%s/channel/0x%02x", ProtocolIDPrefix, channelID))
+	}
+	return protocol.ID(fmt.Sprintf("%s/rules/%d/channel/0x%02x", ProtocolIDPrefix, rules, channelID))
+}
+
+// consensusRulesOf returns the consensus rules version of a channel protocol
+// ID, or false if id is not one.
+func consensusRulesOf(id protocol.ID) (uint64, bool) {
+	rest, ok := strings.CutPrefix(string(id), ProtocolIDPrefix+"/")
+	if !ok {
+		return 0, false
+	}
+	if strings.HasPrefix(rest, "channel/") {
+		return 1, true
+	}
+	parts := strings.Split(rest, "/")
+	if len(parts) != 4 || parts[0] != "rules" || parts[2] != "channel" {
+		return 0, false
+	}
+	rules, err := strconv.ParseUint(parts[1], 10, 64)
+	if err != nil {
+		return 0, false
+	}
+	return rules, true
 }
 
 // StreamWrite sends payload over a stream w/o waiting for a response.
