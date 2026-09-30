@@ -223,6 +223,33 @@ func (blockExec *BlockExecutor) ValidateBlockSkipLastCommit(state State, block *
 	return blockExec.validateBlockAndCheckEvidence(state, block, withSkipLastCommit)
 }
 
+// ValidateFinalizedBlock validates the same as ValidateBlock a block that
+// commit claims +2/3 of state.Validators have committed, such as a block
+// received while block syncing or loaded from the block store.
+//
+// If the block's time differs from the median time of its LastCommit, the
+// block is accepted anyway, provided commit verifies for exactly this block:
+// the network has already finalized it, so the mismatch can only come from a
+// change to the median-time rule. The mismatch is logged and counted.
+//
+// This must never be used for a proposal that is not yet committed.
+func (blockExec *BlockExecutor) ValidateFinalizedBlock(
+	state State, blockID types.BlockID, block *types.Block, commit *types.Commit,
+) error {
+	return blockExec.validateBlockAndCheckEvidence(state, block, blockExec.withFinalizingCommit(blockID, commit))
+}
+
+// ValidateFinalizedBlockSkipLastCommit validates the same as
+// ValidateFinalizedBlock, however it performs no validation of the block's
+// LastCommit.
+//
+// This should only be used if you know that the LastCommit has already been validated elsewhere.
+func (blockExec *BlockExecutor) ValidateFinalizedBlockSkipLastCommit(
+	state State, blockID types.BlockID, block *types.Block, commit *types.Commit,
+) error {
+	return blockExec.validateBlockAndCheckEvidence(state, block, withSkipLastCommit, blockExec.withFinalizingCommit(blockID, commit))
+}
+
 func (blockExec *BlockExecutor) validateBlockAndCheckEvidence(state State, block *types.Block, opts ...func(*blockValidationOptions)) error {
 	lastValidated := blockExec.GetLastValidatedBlock()
 
@@ -251,6 +278,25 @@ func withSkipLastCommit(opts *blockValidationOptions) {
 	opts.skipLastCommitVerification = true
 }
 
+func (blockExec *BlockExecutor) withFinalizingCommit(blockID types.BlockID, commit *types.Commit) func(*blockValidationOptions) {
+	return func(opts *blockValidationOptions) {
+		opts.finalizedBy = &finalizingCommit{
+			blockID:              blockID,
+			commit:               commit,
+			onMedianTimeMismatch: blockExec.logFinalizedBlockTimeMismatch,
+		}
+	}
+}
+
+func (blockExec *BlockExecutor) logFinalizedBlockTimeMismatch(expected, got time.Time) {
+	blockExec.metrics.FinalizedBlockTimeMismatches.Add(1)
+	blockExec.logger.Error(
+		"accepted finalized block whose time differs from this node's median time; "+
+			"the median-time rule has changed since the block was committed",
+		"expected", expected, "got", got,
+	)
+}
+
 // ApplyVerifiedBlock does the same as `ApplyBlock`, but skips verification.
 func (blockExec *BlockExecutor) ApplyVerifiedBlock(
 	state State, blockID types.BlockID, block *types.Block,
@@ -277,6 +323,31 @@ func (blockExec *BlockExecutor) ApplyBlock(
 	// safe to call with nil
 	if !lastValidated.HashesTo(block.Hash()) || block.Height != expectedHeight {
 		if err := validateBlock(state, block, blockExec.withBlockTimeTolerance); err != nil {
+			return state, ErrInvalidBlock(err)
+		}
+		blockExec.setLastValidatedBlock(lastValidated, block)
+	}
+
+	return blockExec.applyBlock(state, blockID, block)
+}
+
+// ApplyFinalizedBlock does the same as ApplyBlock for a block that commit
+// claims +2/3 of state.Validators have committed, validating it with
+// ValidateFinalizedBlock rules. It is used to replay blocks from the block
+// store.
+func (blockExec *BlockExecutor) ApplyFinalizedBlock(
+	state State, blockID types.BlockID, block *types.Block, commit *types.Commit,
+) (State, error) {
+	lastValidated := blockExec.GetLastValidatedBlock()
+
+	expectedHeight := state.LastBlockHeight + 1
+	if state.LastBlockHeight == 0 {
+		expectedHeight = state.InitialHeight
+	}
+
+	// safe to call with nil
+	if !lastValidated.HashesTo(block.Hash()) || block.Height != expectedHeight {
+		if err := validateBlock(state, block, blockExec.withBlockTimeTolerance, blockExec.withFinalizingCommit(blockID, commit)); err != nil {
 			return state, ErrInvalidBlock(err)
 		}
 		blockExec.setLastValidatedBlock(lastValidated, block)

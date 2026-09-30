@@ -26,4 +26,10 @@ type Metrics struct {
 	// updated the validator set since process start.
 	// metrics:Number of validator set updates returned by the application since process start.
 	ValidatorSetUpdates metrics.Counter
+
+	// FinalizedBlockTimeMismatches is the number of already-committed blocks
+	// accepted even though their time differs from the median time computed
+	// by this node, which means the median-time rule has changed since.
+	// metrics:Number of committed blocks accepted whose time differs from this node's median time.
+	FinalizedBlockTimeMismatches metrics.Counter
 }
