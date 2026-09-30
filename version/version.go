@@ -22,10 +22,19 @@ const (
 	// rules change can split with neither side reaching +2/3, and halt.
 	//
 	// Bump it with every such change. libp2p protocol IDs include it (see
-	// lp2p.ProtocolID), so nodes on different rules never exchange consensus
-	// messages: a partial rollout shows up as disconnected peers instead of
-	// a silent halt. Roll a bump out to all validators at once, at an agreed
-	// halt height.
+	// lp2p.ProtocolID), so a partial rollout shows up as disconnected peers
+	// instead of a silent halt. Roll a bump out to all validators at once,
+	// at an agreed halt height.
+	//
+	// The split covers every reactor channel, not just consensus: protocol
+	// IDs gate mempool, block sync, state sync, evidence and PEX traffic
+	// alike. Two consequences to plan the rollout around:
+	//
+	//   - A node left on the old version cannot block sync or state sync to
+	//     catch up, because it cannot open a stream to a peer on the new
+	//     version. Upgrading its binary is always the first step.
+	//   - A seed node on the old version serves no peer discovery to nodes
+	//     on the new one, so seeds must be upgraded too.
 	//
 	// Version 1 is the rules of every node built before this constant
 	// existed, including upstream #5901's MedianTime (Nil precommits

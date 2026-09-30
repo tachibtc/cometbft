@@ -27,8 +27,8 @@ const TimeoutStream = 10 * time.Second
 const MaxStreamSize = 4 * (1 << 20)
 
 // consensusRules is the consensus rules version in this node's protocol IDs.
-// It is a variable only so tests can simulate a node on other rules.
-var consensusRules = version.ConsensusRules
+// Tests simulate a node on other rules through protocolIDForRules.
+const consensusRules = version.ConsensusRules
 
 // ErrConsensusRulesMismatch reports a peer running different consensus rules
 // (see version.ConsensusRules), which this node cannot exchange messages with.
@@ -38,7 +38,8 @@ var ErrConsensusRulesMismatch = errors.New("consensus rules version mismatch")
 // Byte is used for compatibility with the original CometBFT implementation.
 //
 // It includes this node's consensus rules version, so nodes on different
-// rules cannot open streams to each other.
+// rules cannot open streams to each other. Every reactor channel is gated
+// this way, not just consensus: see version.ConsensusRules.
 func ProtocolID(channelID byte) protocol.ID {
 	return protocolIDForRules(channelID, consensusRules)
 }

@@ -233,7 +233,10 @@ func TestProtocolID(t *testing.T) {
 		{channel: 0x10, expected: "/p2p/cometbft/1.0.0/channel/0x10"},
 		{channel: 0xff, expected: "/p2p/cometbft/1.0.0/channel/0xff"},
 	} {
-		require.Equal(t, protocol.ID(tt.expected), ProtocolID(tt.channel))
+		// Pinned to rules v1 rather than ProtocolID, whose output changes
+		// with version.ConsensusRules. TestProtocolIDForRules covers the
+		// versioned forms and ProtocolID's use of this node's version.
+		require.Equal(t, protocol.ID(tt.expected), protocolIDForRules(tt.channel, 1))
 	}
 }
 
